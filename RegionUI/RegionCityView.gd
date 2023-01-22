@@ -11,6 +11,8 @@ var settings = {"borders":true}
 var TILE_BASE_HEIGHT = 18
 var TILE_BASE_WIDTH = 90
 
+#Shader
+onready var outline_shader = preload("res://shaders/region_outline.shader")
 
 func init(filepath : String):
 	savefile = DBPF.new(filepath)
@@ -72,3 +74,16 @@ func open_city():
 	var err = get_tree().change_scene("res://CityView/CityScene/City.tscn")
 	if err != OK:
 		print("Error trying to change the scene to the city")
+
+func on_mouse_hovered():
+	Logger.info("Start outline")
+	$Thumbnail.material = ShaderMaterial.new()
+	$Thumbnail.material.shader = outline_shader
+
+func on_mouse_unhovered():
+	Logger.info("End outline")
+	$Thumbnail.material = null
+	
+	
+	
+	
