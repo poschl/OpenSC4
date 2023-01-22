@@ -25,7 +25,7 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		var grid_position : Vector2 = world_to_map(get_global_mouse_position())
 		if grid_position.x >= 0 and grid_position.x < width and grid_position.y >= 0 and grid_position.y < height:			
-			pass
+			cities[grid_position.x][grid_position.y].toggle_dialog()
 			
 			
 	if event is InputEventMouse and event.position:

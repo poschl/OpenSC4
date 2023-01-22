@@ -11,6 +11,7 @@ var settings = {"borders":true}
 var TILE_BASE_HEIGHT = 18
 var TILE_BASE_WIDTH = 90
 
+var dialog : Node = null
 #Shader
 onready var outline_shader = preload("res://shaders/region_outline.shader")
 
@@ -23,6 +24,7 @@ func init(filepath : String):
 	city_info = savefile.get_subfile(0xca027edb, 0xca027ee1, 0, SC4ReadRegionalCity)
 
 func _ready():
+	prepare_dialog()
 	display()
 
 func display(): # TODO city edges override other cities causing glitches, can be solved by controlling the draw order or by adding a z value
@@ -75,15 +77,27 @@ func open_city():
 	if err != OK:
 		print("Error trying to change the scene to the city")
 
-func on_mouse_hovered():
-	Logger.info("Start outline")
+func on_mouse_hovered():	
 	$Thumbnail.material = ShaderMaterial.new()
 	$Thumbnail.material.shader = outline_shader
 
 func on_mouse_unhovered():
-	Logger.info("End outline")
 	$Thumbnail.material = null
 	
+func toggle_dialog():
+	Logger.info("Toggle Dialog")
 	
+		
+	
+	
+	
+	#var pos = Vector2( 0, -dialog_texture.texture.get_height()*0.66)
+	#dialog_texture.set_position(pos)
+	
+	
+	
+	
+func prepare_dialog():
+	dialog = get_tree().get_root().find_node("new_city_dialog").duplicate()
 	
 	
