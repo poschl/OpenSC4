@@ -3,7 +3,7 @@ extends Node
 const _PRINT_DEBUG: bool = true
 
 
-func print_dict(dict, node:Node):
+func print_dict(dict, _node:Node):
 	if _PRINT_DEBUG:		
 		for key in dict:
 			print(key)

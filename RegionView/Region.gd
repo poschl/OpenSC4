@@ -69,7 +69,7 @@ func _ready():
 			for j in range(y, y+height): 
 				$BaseGrid.cities[i][j] = city
 		$BaseGrid.add_child(city)
-	load_ui()
+	DEBUG_output()
 
 func read_config_bmp():
 	var region_config = load("res://Regions/%s/config.bmp" % REGION_NAME).get_data()
@@ -131,28 +131,21 @@ func _DEBUG_extract_files(type_id, group_id):
 
 	
 
-func load_ui():
-	Logger.info("Starting to load some UI pictures...")
-	
+func DEBUG_output():
+	"""
+	Everything in this function is NOT related to the production code
+	"""
 	
 	#var subfile = Core.get_FSH_subfile(0x46a006b0, 0xab7052bd)
 	#var subfile = Core.subfile(0x856ddbac,0x1ABE787D, 0xcc1a735d, ImageSubfile)
 	var type_id = "PNG"
 	var groups = Core.get_list_groups(type_id)
 	print(groups)
-	var group_id = "UI_IMAGE"
-	
+	var _group_id = "UI_IMAGE"
 
-	
-	
-	
 	# self._DEBUG_extract_files(type_id, group_id)
-	
-	
-			
-	#pass
-	#var ui = Core.subfile(0x0, 0x96a006b0, 0xaa920991, SC4UISubfile)
-	#$UICanvas.add_child(ui.root)
+
+
 
 
 

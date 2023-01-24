@@ -10,7 +10,7 @@ func _init():
 	self.load_music_files()
 
 func _ready():
-	self.connect("finished", self, "play_music")
+	var _unused = self.connect("finished", self, "play_music")
 
 func play_music():
 	self.current_music = self.music_list[rng.randi_range(0, len(self.music_list)- 1)]
