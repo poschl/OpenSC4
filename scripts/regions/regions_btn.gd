@@ -14,3 +14,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_regions_btn_pressed():
+	self.get_child(0).visible = !self.get_child(0).visible
+
+
+func _on_settings_pressed():
+	self.get_child(0).visible = false
+	self.pressed = false
