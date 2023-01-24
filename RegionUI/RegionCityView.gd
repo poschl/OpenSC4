@@ -123,10 +123,13 @@ func prepare_dialog():
 		dialog = dialog_res.instance()
 		dialog.get_child(3).text = str(city_info.population_residential)
 		dialog.get_child(4).text = str(city_info.population_commercial)
-		dialog.get_child(5).text = str(city_info.population_industrial)
+		dialog.get_child(5).text = str(city_info.population_industrial)		
 	else:
 		dialog_res = load(new_city_dialog_path)
 		dialog = dialog_res.instance()
+		
+	# Common for both dialog
+	dialog.set_city_to_dialog(self)
 		
 	
 	dialog.visible = false

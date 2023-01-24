@@ -17,15 +17,10 @@ func init_cities_array(width_, height_):
 			cities[i].append(null)
 
 func _unhandled_input(event):
-	if event is InputEventMouseButton and event.doubleclick:
-		# Get the grid position
-		var grid_position : Vector2 = world_to_map(get_global_mouse_position())
-		if grid_position.x >= 0 and grid_position.x < width and grid_position.y >= 1 and grid_position.y < height:
-			cities[grid_position.x][grid_position.y].open_city()
-			
+
 	if event is InputEventMouseButton and event.pressed:
 		var grid_position : Vector2 = world_to_map(get_global_mouse_position())
-		if grid_position.x >= 0 and grid_position.x < width and grid_position.y >= 0 and grid_position.y < height:			
+		if grid_position.x >= 0 and grid_position.x < width and grid_position.y >= 0 and grid_position.y < height:
 			var current_city_selected = cities[grid_position.x][grid_position.y]
 			if last_city_selected != current_city_selected:
 				if last_city_selected:
@@ -37,8 +32,6 @@ func _unhandled_input(event):
 	if event is InputEventMouse and event.position:
 		var grid_position : Vector2 = world_to_map(get_global_mouse_position())
 		if grid_position.x >= 0 and grid_position.x < width and grid_position.y >= 0 and grid_position.y < height:
-			
-			
 			var current_city_hovered = cities[grid_position.x][grid_position.y]
 			if last_city_hovered != current_city_hovered:
 				if last_city_hovered:

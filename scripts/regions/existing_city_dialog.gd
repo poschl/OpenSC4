@@ -5,6 +5,7 @@ extends TextureRect
 # var a = 2
 # var b = "text"
 
+var city = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,8 +16,13 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-func set_play_btn(func_play_btn):
+
+func set_city_to_dialog(city_info):
+	self.city = city_info
+
+	
 	
 
 func _on_play_city_btn_pressed():
-	pass # Replace with function body.
+	if self.city:
+		self.city.open_city()
