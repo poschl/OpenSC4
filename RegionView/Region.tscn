@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://RegionUI/RegionUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://RegionView/Region.gd" type="Script" id=2]
@@ -12,6 +12,15 @@
 [ext_resource path="res://scripts/regions/regions_btn.gd" type="Script" id=10]
 [ext_resource path="res://scripts/regions/top_menu.gd" type="Script" id=11]
 [ext_resource path="res://scripts/regions/bottom_left_menu.gd" type="Script" id=12]
+[ext_resource path="res://scripts/regions/regions_menu.gd" type="Script" id=13]
+[ext_resource path="res://scripts/regions/settings_menu.gd" type="Script" id=14]
+[ext_resource path="res://scripts/regions/new_region_btn.gd" type="Script" id=15]
+[ext_resource path="res://scripts/regions/open_region_btn.gd" type="Script" id=16]
+[ext_resource path="res://scripts/regions/sound_btn.gd" type="Script" id=17]
+[ext_resource path="res://scripts/regions/screenshot_area_btn.gd" type="Script" id=18]
+[ext_resource path="res://scripts/regions/general_btn.gd" type="Script" id=19]
+[ext_resource path="res://scripts/regions/screenshot_btn.gd" type="Script" id=20]
+[ext_resource path="res://scripts/regions/screen_btn.gd" type="Script" id=21]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -129,7 +138,30 @@ alignment = 1
 margin_right = 80.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 80, 60 )
+toggle_mode = true
 script = ExtResource( 10 )
+
+[node name="regions_menu" type="TextureRect" parent="UICanvas/Control2/HBoxContainer/regions_btn"]
+show_behind_parent = true
+margin_left = -176.0
+margin_top = -8.0
+margin_right = 572.0
+margin_bottom = 196.0
+script = ExtResource( 13 )
+
+[node name="new_region_btn" type="TextureButton" parent="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu"]
+margin_left = 50.0
+margin_top = 124.0
+margin_right = 90.0
+margin_bottom = 164.0
+script = ExtResource( 15 )
+
+[node name="open_region_btn" type="TextureButton" parent="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu"]
+margin_left = 125.0
+margin_top = 126.0
+margin_right = 165.0
+margin_bottom = 166.0
+script = ExtResource( 16 )
 
 [node name="Panel" type="Panel" parent="UICanvas/Control2/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
@@ -173,6 +205,54 @@ margin_top = 20.0
 margin_right = -20.0
 margin_bottom = 66.0
 rect_min_size = Vector2( 60, 46 )
+toggle_mode = true
 script = ExtResource( 6 )
 
+[node name="settings_menu" type="TextureRect" parent="UICanvas/settings"]
+show_behind_parent = true
+margin_left = -212.0
+margin_top = -7.0
+margin_right = 59.0
+margin_bottom = 131.0
+script = ExtResource( 14 )
+
+[node name="screenshot_btn" type="TextureButton" parent="UICanvas/settings/settings_menu"]
+margin_left = 12.0
+margin_top = 102.0
+margin_right = 52.0
+margin_bottom = 131.0
+script = ExtResource( 20 )
+
+[node name="screenshot_area_btn" type="TextureButton" parent="UICanvas/settings/settings_menu"]
+margin_left = 60.0
+margin_top = 102.0
+margin_right = 100.0
+margin_bottom = 131.0
+script = ExtResource( 18 )
+
+[node name="screen_btn" type="TextureButton" parent="UICanvas/settings/settings_menu"]
+margin_left = 108.0
+margin_top = 102.0
+margin_right = 148.0
+margin_bottom = 131.0
+script = ExtResource( 21 )
+
+[node name="sound_btn" type="TextureButton" parent="UICanvas/settings/settings_menu"]
+margin_left = 148.0
+margin_top = 102.0
+margin_right = 188.0
+margin_bottom = 131.0
+script = ExtResource( 17 )
+
+[node name="general_btn" type="TextureButton" parent="UICanvas/settings/settings_menu"]
+margin_left = 188.0
+margin_top = 99.0
+margin_right = 228.0
+margin_bottom = 128.0
+script = ExtResource( 19 )
+
+[connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn" to="UICanvas/Control2/HBoxContainer/regions_btn" method="_on_regions_btn_pressed"]
+[connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn" to="UICanvas/settings" method="_on_regions_btn_pressed"]
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/exit_btn" to="UICanvas/Control2/HBoxContainer/exit_btn" method="_on_exit_btn_pressed"]
+[connection signal="pressed" from="UICanvas/settings" to="UICanvas/Control2/HBoxContainer/regions_btn" method="_on_settings_pressed"]
+[connection signal="pressed" from="UICanvas/settings" to="UICanvas/settings" method="_on_settings_pressed"]

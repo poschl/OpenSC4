@@ -1,4 +1,4 @@
-extends TextureButton
+extends TextureRect
 
 
 # Declare member variables here. Examples:
@@ -6,13 +6,11 @@ extends TextureButton
 # var b = "text"
 
 
-	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Utils.build_button(self, Vector2(60,46), 339829508)
-	
-	
-	
+	var region_menu = Core.get_subfile("PNG", "UI_IMAGE", 339829511)
+	self.texture = region_menu.get_as_texture()
+	self.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,10 +18,4 @@ func _ready():
 #	pass
 
 
-func _on_settings_pressed():
-	self.get_child(0).visible = !self.get_child(0).visible
 
-
-func _on_regions_btn_pressed():
-	self.get_child(0).visible = false
-	self.pressed = false
