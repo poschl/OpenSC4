@@ -69,7 +69,7 @@ func _ready():
 			for j in range(y, y+height): 
 				$BaseGrid.cities[i][j] = city
 		$BaseGrid.add_child(city)
-	load_ui()
+	DEBUG_output()
 
 func read_config_bmp():
 	var region_config = load("res://Regions/%s/config.bmp" % REGION_NAME).get_data()
@@ -129,52 +129,23 @@ func _DEBUG_extract_files(type_id, group_id):
 	else:
 		Logger.wanr("Type: %s is not yet implemented." % type_id)
 
-func build_button(button, instance_id):
-	var btn_img = Core.get_subfile("PNG", "UI_IMAGE", instance_id)
-	button.texture_disabled = AtlasTexture.new()
-	button.texture_disabled.atlas = btn_img.get_as_texture()
-	button.texture_disabled.region = Rect2(0, 0, 80 ,60)
 	
-	button.texture_normal = AtlasTexture.new()
-	button.texture_normal.atlas = btn_img.get_as_texture()
-	button.texture_normal.region = Rect2(80, 0, 80 ,60)
-	
-	button.texture_pressed = AtlasTexture.new()
-	button.texture_pressed.atlas = btn_img.get_as_texture()
-	button.texture_pressed.region = Rect2(160, 0, 80 ,60)
-	
-	button.texture_hover = AtlasTexture.new()
-	button.texture_hover.atlas = btn_img.get_as_texture()
-	button.texture_hover.region = Rect2(240, 0, 80 ,60)
 
-
-func build_top_buttons():
-	build_button($UICanvas.get_child(2).get_child(1).get_child(0), 339829505)
-	build_button($UICanvas.get_child(2).get_child(1).get_child(1), 339829506)
-	build_button($UICanvas.get_child(2).get_child(1).get_child(2), 339829507)
-
-func load_ui():
-	Logger.info("Starting to load some UI pictures...")
-	
+func DEBUG_output():
+	"""
+	Everything in this function is NOT related to the production code
+	"""
 	
 	#var subfile = Core.get_FSH_subfile(0x46a006b0, 0xab7052bd)
 	#var subfile = Core.subfile(0x856ddbac,0x1ABE787D, 0xcc1a735d, ImageSubfile)
 	var type_id = "PNG"
 	var groups = Core.get_list_groups(type_id)
 	print(groups)
-	var group_id = "UI_IMAGE"
-	
-	var bottom_left_menu_img = Core.get_subfile("PNG", "UI_IMAGE", 339829504)
-	$UICanvas.get_child(1).get_child(0).texture = bottom_left_menu_img.get_as_texture()
-	
-	var top_menu_image = Core.get_subfile("PNG", "UI_IMAGE", 339829519)
-	$UICanvas.get_child(2).get_child(0).texture = top_menu_image.get_as_texture()
-	build_top_buttons()	
-	
+	var _group_id = "UI_IMAGE"
+
 	# self._DEBUG_extract_files(type_id, group_id)
-	
-	
-			
-	#pass
-	#var ui = Core.subfile(0x0, 0x96a006b0, 0xaa920991, SC4UISubfile)
-	#$UICanvas.add_child(ui.root)
+
+
+
+
+

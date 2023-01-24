@@ -30,22 +30,22 @@ func load_user_configuration():
 		Logger.warn("New configuration file will be created.")
 	return config
 	
-func get_gamedir_path(config):
+func get_gamedir_path(configuration):
 	# Try to get the game dir path from configuration
 	# if it is not there then dialog popups
-	var path = config.get_value("paths", "sc4_files")
+	var path = configuration.get_value("paths", "sc4_files")
 	if not path:
 		$dialog.popup_centered(get_viewport_rect().size / 2)		
 		yield($dialog, "popup_hide")
 		path = $dialog.current_dir
-		config.set_value("paths", "sc4_files", path)
-		config.save("user://config.ini")
+		configuration.set_value("paths", "sc4_files", path)
+		configuration.save("user://config.ini")
 	return path
 		
 func _ready():
-	var config = load_user_configuration()
+	var configuration = load_user_configuration()
 	
-	Core.game_dir = get_gamedir_path(config)
+	Core.game_dir = get_gamedir_path(configuration)
 
 	$LoadProgress.value = 0
 	loading_thread = Thread.new()
@@ -68,7 +68,7 @@ func load_DATs():
 
 func finish_loading():
 	Logger.info("DBPF files loaded")
-	var err = get_tree().change_scene("res://Region.tscn")
+	var err = get_tree().change_scene("res://RegionView/Region.tscn")
 	if err != OK:
 		Logger.error("Error: %s" % err)
 

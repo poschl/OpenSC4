@@ -136,7 +136,6 @@ func _type_int_2_str(dict, number:int) -> String:
 	Returns empty string if not found.
 	"""
 	var result : String
-	var keys = dict.keys()
 	if dict.has(number):
 		result = dict[number]
 	return result
