@@ -11,12 +11,16 @@ var settings = {"borders":true}
 var TILE_BASE_HEIGHT = 18
 var TILE_BASE_WIDTH = 90
 
+var new_city_dialog_path = "res://scene/new_city_dialog.tscn"
+var existing_city_dialog_path = "res://scene/existing_city_dialog.tscn"
 var dialog : Node = null
 #Shader
 onready var outline_shader = preload("res://shaders/region_outline.shader")
 
 func init(filepath : String):
+	# This is called from Region _ready
 	savefile = DBPF.new(filepath)
+	
 	# Load the thumbnails
 	# Note: should be 0, 2, 4, 6, but for some reason only 2 and 4 are ever present
 	for instance_id in [0, 2]:
@@ -84,10 +88,17 @@ func on_mouse_hovered():
 func on_mouse_unhovered():
 	$Thumbnail.material = null
 	
+func on_select():
+	toggle_dialog()
+	
+func on_unselect():
+	toggle_dialog()
+	
 func toggle_dialog():
 	Logger.info("Toggle Dialog")
-	
-		
+	dialog.visible = !dialog.visible
+	var center = get_texture_center()
+	dialog.set_position(center)
 	
 	
 	
@@ -95,9 +106,31 @@ func toggle_dialog():
 	#dialog_texture.set_position(pos)
 	
 	
+func get_texture_center():
+	var width = $Thumbnail.texture.get_width()
+	var height = $Thumbnail.texture.get_height()
+	var width_in_tilemap = width*sin(50)
+	var height_in_tilemap = height*cos(50)
+	Logger.info("W %d H %d wt %d ht %d" % [width, height, width_in_tilemap, height_in_tilemap])
+	var center = Vector2(0, -height/2)
+	return center
 	
 	
 func prepare_dialog():
-	dialog = get_tree().get_root().find_node("new_city_dialog").duplicate()
+	var dialog_res = null
+	if self.city_info.is_populated():
+		dialog_res = load(existing_city_dialog_path)
+		dialog = dialog_res.instance()
+		dialog.get_child(3).text = str(city_info.population_residential)
+		dialog.get_child(4).text = str(city_info.population_commercial)
+		dialog.get_child(5).text = str(city_info.population_industrial)
+	else:
+		dialog_res = load(new_city_dialog_path)
+		dialog = dialog_res.instance()
+		
+	
+	dialog.visible = false
+	self.add_child(dialog)
+	
 	
 	

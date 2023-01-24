@@ -24,3 +24,7 @@ func load(file, dbdf=null):
 	self.population_industrial = stream.get_32();
 	stream.get_float();
 	self.mayor_rating = stream.get_8();
+	
+func is_populated() -> bool:
+	return self.population_residential > 0 or self.population_commercial > 0 or self.population_industrial > 0
+	
