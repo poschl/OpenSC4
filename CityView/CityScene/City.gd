@@ -23,7 +23,7 @@ func _ready():
 	set_cursor()
 	pass
 
-func gen_random_terrain(width : int, height : int) -> Array:
+func gen_random_terrain(_width : int, _height : int) -> Array:
 	var heightmap : Array = []
 	var noise = OpenSimplexNoise.new()
 	noise.seed = randi()
@@ -198,7 +198,7 @@ func create_face(v0 : Vector3, v1 : Vector3, v2 : Vector3, v3 : Vector3, heightm
 
 	return [vertices, normals, UVs, layer_ind, layer_weights]
 
-func create_edge(vert, n1, n2, normal):
+func create_edge(vert, _n1, _n2, normal):
 	"""
 	in: 4 vertices in array and two normals
 	out: appropriate triangle vertices for 3 levels of edge depth 

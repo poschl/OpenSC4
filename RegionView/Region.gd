@@ -123,9 +123,17 @@ func _DEBUG_extract_files(type_id, group_id):
 				continue
 			var subfile = Core.get_subfile(type_id, group_id, item)
 			var img = subfile.get_as_texture().get_data()
-			var path = "user://%s/%s/%s.png" % [type_id, group_id, item]
-			#var path = "user://UI/%s.png" % [item]
+			var path = "user://%s/%s/%s.png" % [type_id, group_id, item]			
 			img.save_png(path)
+	elif type_id == "FSH":
+		for item in list_of_instances:
+			if item in []:
+				continue
+			var subfile = Core.get_subfile(type_id, group_id, item)
+			var img = subfile.get_as_texture().get_data()
+			var path = "user://%s/%s/%s.png" % [type_id, group_id, item]			
+			img.save_png(path)
+			
 	else:
 		Logger.wanr("Type: %s is not yet implemented." % type_id)
 
@@ -141,9 +149,8 @@ func DEBUG_output():
 	var type_id = "PNG"
 	var groups = Core.get_list_groups(type_id)
 	print(groups)
-	var _group_id = "UI_IMAGE"
-
-	# self._DEBUG_extract_files(type_id, group_id)
+	
+	#self._DEBUG_extract_files("PNG", "MENU_ICONS")
 
 
 

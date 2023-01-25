@@ -641,7 +641,7 @@ func _drag_network(start, end, type):
 func _build_network():#start, end, type):
 	"TODO Register tiles to network_tiles and figure out how to copy PoolVector3Array"
 	if len(self.drag_arrays[ArrayMesh.ARRAY_VERTEX]) > 0:
-		var debug = false
+		var _debug = false
 		if self.mesh == null:
 			self.mesh = ArrayMesh.new()
 		if len(self.built_arrays) == 0:

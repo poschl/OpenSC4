@@ -199,7 +199,7 @@ func update_terrain(locations : PoolVector3Array, rot_flipped_UVs : PoolVector2A
 	var vertices_copy = arrays[ArrayMesh.ARRAY_VERTEX]
 	var UVs_copy = arrays[ArrayMesh.ARRAY_TEX_UV]
 	# iterate locations per quad
-	var updated_vertices = []
+	var _updated_vertices = []
 	for i in range(0, len(locations), 6):
 		var tile_loc = locations[i]
 		for neigh in neighbours:
