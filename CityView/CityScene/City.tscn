@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://CityView/CityScene/City.gd" type="Script" id=1]
 [ext_resource path="res://CityView/CityScene/CameraAnchor3D.gd" type="Script" id=2]
@@ -424,6 +424,8 @@ void fragment(){
 render_priority = 1
 shader = SubResource( 18 )
 
+[sub_resource type="ButtonGroup" id=20]
+
 [node name="City" type="Spatial"]
 script = ExtResource( 1 )
 __meta__ = {
@@ -600,6 +602,7 @@ margin_right = 124.0
 margin_bottom = -96.0
 rect_min_size = Vector2( 44, 44 )
 toggle_mode = true
+group = SubResource( 20 )
 script = ExtResource( 24 )
 
 [node name="passanger_station" type="TextureButton" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble"]
@@ -609,6 +612,7 @@ margin_right = 124.0
 margin_bottom = -48.0
 rect_min_size = Vector2( 44, 44 )
 toggle_mode = true
+group = SubResource( 20 )
 script = ExtResource( 27 )
 
 [node name="cargo_station" type="TextureButton" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble"]
@@ -617,6 +621,7 @@ margin_top = -44.0
 margin_right = 124.0
 rect_min_size = Vector2( 44, 44 )
 toggle_mode = true
+group = SubResource( 20 )
 script = ExtResource( 29 )
 
 [node name="big_station" type="TextureButton" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble"]
@@ -626,6 +631,7 @@ margin_right = 124.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 44, 44 )
 toggle_mode = true
+group = SubResource( 20 )
 script = ExtResource( 28 )
 
 [node name="monorail" type="TextureButton" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble"]
@@ -635,6 +641,7 @@ margin_right = 124.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 44, 44 )
 toggle_mode = true
+group = SubResource( 20 )
 script = ExtResource( 26 )
 
 [node name="monorail_station" type="TextureButton" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble"]
@@ -644,6 +651,7 @@ margin_right = 124.0
 margin_bottom = 160.0
 rect_min_size = Vector2( 44, 44 )
 toggle_mode = true
+group = SubResource( 20 )
 script = ExtResource( 25 )
 
 [node name="comm_btn" type="TextureButton" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu"]
