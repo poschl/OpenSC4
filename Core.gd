@@ -4,6 +4,12 @@ var subfile_indices : Dictionary
 var sub_by_type_and_group : Dictionary
 var game_dir = null
 
+# User settigns values are read from config.ini(BootScreen.gd)
+# if not read then tohose defaults are used
+var config_path = "user://config.ini"
+var show_city_names : bool = true
+var show_city_boundaries : bool = false
+
 var type_dict_to_text = {
 	0x6534284a: "LTEXT",
 	0x5ad0e817: "S3D",
@@ -130,6 +136,9 @@ var class_dict = {
 	"TEXT": null
 }
 
+func _ready():
+	read_user_config()
+
 func _type_int_2_str(dict, number:int) -> String:
 	"""
 	Tries to number into text based on dicionary
@@ -225,3 +234,30 @@ func add_dbpf(dbpf : DBPF):
 		if not sub_by_type_and_group.keys().has([index.type_id, index.group_id]):
 			sub_by_type_and_group[[index.type_id, index.group_id]] = {}
 		sub_by_type_and_group[[index.type_id, index.group_id]][index.instance_id] = (dbpf.indices[ind_key])
+
+func read_user_config():
+	var config = ConfigFile.new()
+	var error = config.load(config_path)
+	if error != 0:
+		Logger.error("Cannot open config. %d", error)
+		return
+	if config.has_section("PlayerSettings"):
+		if config.has_section_key("PlayerSettings", "show_city_names"):
+			show_city_names = config.get_value("PlayerSettings", "show_city_names")
+		if config.has_section_key("PlayerSettings", "show_city_boundaries"):
+			show_city_boundaries = config.get_value("PlayerSettings", "show_city_boundaries")
+			
+
+
+func _exit_tree():
+	save_user_configuration()
+	
+func save_user_configuration():	
+	var config = ConfigFile.new()
+	var error = config.load(config_path)
+	if error != 0:
+		Logger.error("Cannot open config. %d", error)
+		return
+	config.set_value("PlayerSettings", "show_city_names", self. show_city_names)
+	config.set_value("PlayerSettings", "show_city_boundaries", self. show_city_boundaries)
+	config.save(config_path)

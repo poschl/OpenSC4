@@ -30,6 +30,8 @@ func load_user_configuration():
 		Logger.warn("New configuration file will be created.")
 	return config
 	
+
+	
 func get_gamedir_path(configuration):
 	# Try to get the game dir path from configuration
 	# if it is not there then dialog popups
@@ -44,7 +46,6 @@ func get_gamedir_path(configuration):
 		
 func _ready():
 	var configuration = load_user_configuration()
-	
 	Core.game_dir = get_gamedir_path(configuration)
 
 	$LoadProgress.value = 0

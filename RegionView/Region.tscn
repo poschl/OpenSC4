@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://RegionUI/RegionUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://RegionView/Region.gd" type="Script" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://scripts/regions/screenshot_btn.gd" type="Script" id=20]
 [ext_resource path="res://scripts/regions/screen_btn.gd" type="Script" id=21]
 [ext_resource path="res://scripts/regions/show_option1_btn.gd" type="Script" id=22]
+[ext_resource path="res://scripts/regions/show_city_boundaries_btn.gd" type="Script" id=23]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -164,7 +165,7 @@ margin_right = 165.0
 margin_bottom = 166.0
 script = ExtResource( 16 )
 
-[node name="show_option1_btn" type="TextureButton" parent="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu"]
+[node name="show_city_names_btn" type="TextureButton" parent="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu"]
 margin_left = 320.0
 margin_top = 124.0
 margin_right = 337.0
@@ -172,13 +173,29 @@ margin_bottom = 141.0
 rect_min_size = Vector2( 17, 17 )
 script = ExtResource( 22 )
 
-[node name="Label" type="Label" parent="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/show_option1_btn"]
+[node name="Label" type="Label" parent="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/show_city_names_btn"]
 modulate = Color( 0.223529, 0.286275, 0.388235, 1 )
 margin_left = 28.0
 margin_top = 3.0
 margin_right = 138.0
 margin_bottom = 17.0
 text = "Show City Names"
+
+[node name="show_city_boundaries_btn" type="TextureButton" parent="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu"]
+margin_left = 320.0
+margin_top = 158.0
+margin_right = 337.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 17, 17 )
+script = ExtResource( 23 )
+
+[node name="Label" type="Label" parent="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/show_city_boundaries_btn"]
+modulate = Color( 0.223529, 0.286275, 0.388235, 1 )
+margin_left = 28.0
+margin_top = 3.0
+margin_right = 165.0
+margin_bottom = 17.0
+text = "Show City Boundaries"
 
 [node name="Panel" type="Panel" parent="UICanvas/Control2/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
@@ -270,7 +287,8 @@ script = ExtResource( 19 )
 
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn" to="UICanvas/Control2/HBoxContainer/regions_btn" method="_on_regions_btn_pressed"]
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn" to="UICanvas/settings" method="_on_regions_btn_pressed"]
-[connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/show_option1_btn" to="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/show_option1_btn" method="_on_show_option1_btn_pressed"]
+[connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/show_city_names_btn" to="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/show_city_names_btn" method="_on_show_option1_btn_pressed"]
+[connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/show_city_boundaries_btn" to="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/show_city_boundaries_btn" method="_on_show_city_boundaries_btn_pressed"]
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/exit_btn" to="UICanvas/Control2/HBoxContainer/exit_btn" method="_on_exit_btn_pressed"]
 [connection signal="pressed" from="UICanvas/settings" to="UICanvas/Control2/HBoxContainer/regions_btn" method="_on_settings_pressed"]
 [connection signal="pressed" from="UICanvas/settings" to="UICanvas/settings" method="_on_settings_pressed"]
