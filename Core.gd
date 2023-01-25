@@ -9,6 +9,7 @@ var game_dir = null
 var config_path = "user://config.ini"
 var show_city_names : bool = true
 var show_city_boundaries : bool = false
+var satellite_view : bool = true # true for SatelliteView, false for Transportation Map
 
 var type_dict_to_text = {
 	0x6534284a: "LTEXT",
@@ -235,7 +236,15 @@ func add_dbpf(dbpf : DBPF):
 			sub_by_type_and_group[[index.type_id, index.group_id]] = {}
 		sub_by_type_and_group[[index.type_id, index.group_id]][index.instance_id] = (dbpf.indices[ind_key])
 
+
+
+
 func read_user_config():
+	"""
+	Read user configuration from config file
+	It's not optimal, maybe it should be moved to another script (like Player settings)
+	The same file is also opened from BootScreen, which is also not good approach
+	"""
 	var config = ConfigFile.new()
 	var error = config.load(config_path)
 	if error != 0:
@@ -246,13 +255,18 @@ func read_user_config():
 			show_city_names = config.get_value("PlayerSettings", "show_city_names")
 		if config.has_section_key("PlayerSettings", "show_city_boundaries"):
 			show_city_boundaries = config.get_value("PlayerSettings", "show_city_boundaries")
+		if config.has_section_key("PlayerSettings", "satellite_view"):
+			show_city_boundaries = config.get_value("PlayerSettings", "satellite_view")	
 			
-
 
 func _exit_tree():
 	save_user_configuration()
 	
-func save_user_configuration():	
+func save_user_configuration():
+	"""
+	Save the options user selected in top menu in Region view
+	
+	"""
 	var config = ConfigFile.new()
 	var error = config.load(config_path)
 	if error != 0:
@@ -260,4 +274,5 @@ func save_user_configuration():
 		return
 	config.set_value("PlayerSettings", "show_city_names", self. show_city_names)
 	config.set_value("PlayerSettings", "show_city_boundaries", self. show_city_boundaries)
+	config.set_value("PlayerSettings", "satellite_view", self. satellite_view)
 	config.save(config_path)
