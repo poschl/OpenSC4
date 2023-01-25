@@ -182,6 +182,7 @@ Core="*res://Core.gd"
 Logger="*res://utils/logger.gd"
 DebugUtils="*res://utils/debug_utils.gd"
 Utils="*res://utils/Utils.gd"
+Player="*res://CityView/Player.gd"
 
 [display]
 

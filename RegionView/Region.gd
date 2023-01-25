@@ -69,6 +69,7 @@ func _ready():
 			for j in range(y, y+height): 
 				$BaseGrid.cities[i][j] = city
 		$BaseGrid.add_child(city)
+	Player.set_cursor("normal")
 	DEBUG_output()
 
 func read_config_bmp():
@@ -106,36 +107,7 @@ func close_all_prompts():
 			if prompt != null:
 				prompt.queue_free()
 				
-func _DEBUG_extract_files(type_id, group_id):
-	var list_of_instances = Core.get_list_instances(type_id, group_id)
-	if type_id == "PNG":
-		for item in list_of_instances:
-			# Filter bad numbers, maybe holes? I don't know
-			if item in [1269886195,339829152, 339829153, 
-						339829154, 339829155, 1809881377, 
-						1809881378, 1809881379, 1809881380,
-						1809881381, 1809881382, 3929989376,
-						3929989392, 3929989408, 3929989424,
-						3929989440, 3929989456, 338779648,
-						338779664, 338779680, 338779696,
-						338779712, 338779728, 338779729,
-						733031711, 3413654842]:
-				continue
-			var subfile = Core.get_subfile(type_id, group_id, item)
-			var img = subfile.get_as_texture().get_data()
-			var path = "user://%s/%s/%s.png" % [type_id, group_id, item]			
-			img.save_png(path)
-	elif type_id == "FSH":
-		for item in list_of_instances:
-			if item in []:
-				continue
-			var subfile = Core.get_subfile(type_id, group_id, item)
-			var img = subfile.get_as_texture().get_data()
-			var path = "user://%s/%s/%s.png" % [type_id, group_id, item]			
-			img.save_png(path)
-			
-	else:
-		Logger.wanr("Type: %s is not yet implemented." % type_id)
+
 
 	
 
@@ -147,10 +119,10 @@ func DEBUG_output():
 	#var subfile = Core.get_FSH_subfile(0x46a006b0, 0xab7052bd)
 	#var subfile = Core.subfile(0x856ddbac,0x1ABE787D, 0xcc1a735d, ImageSubfile)
 	var type_id = "PNG"
-	var groups = Core.get_list_groups(type_id)
-	print(groups)
+	var _groups = Core.get_list_groups(type_id)
+	#print(groups)
 	
-	#self._DEBUG_extract_files("PNG", "MENU_ICONS")
+	#DebugUtils._DEBUG_extract_files("PNG", "MENU_ICONS")
 
 
 

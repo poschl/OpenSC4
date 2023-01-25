@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://CityView/CityScene/City.gd" type="Script" id=1]
 [ext_resource path="res://CityView/CityScene/CameraAnchor3D.gd" type="Script" id=2]
@@ -9,12 +9,10 @@
 [ext_resource path="res://CityView/UI_scripts/building_menu.gd" type="Script" id=7]
 [ext_resource path="res://CityView/UI_scripts/building_menu_btn.gd" type="Script" id=8]
 [ext_resource path="res://CityView/UI_scripts/nature_btn.gd" type="Script" id=9]
-[ext_resource path="res://CityView/335631686.png" type="Texture" id=10]
 [ext_resource path="res://CityView/UI_scripts/lands_btn.gd" type="Script" id=11]
 [ext_resource path="res://CityView/UI_scripts/network_btn.gd" type="Script" id=12]
 [ext_resource path="res://CityView/UI_scripts/engineering_btn.gd" type="Script" id=13]
 [ext_resource path="res://CityView/UI_scripts/services_btn.gd" type="Script" id=14]
-[ext_resource path="res://CityView/335631845.png" type="Texture" id=15]
 [ext_resource path="res://CityView/UI_scripts/networks_menu.gd" type="Script" id=16]
 [ext_resource path="res://CityView/UI_scripts/rails_btn.gd" type="Script" id=17]
 [ext_resource path="res://CityView/UI_scripts/seaport_btn.gd" type="Script" id=18]
@@ -521,7 +519,6 @@ margin_top = -441.0
 margin_right = 62.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 157, 489 )
-texture = ExtResource( 10 )
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_lock_": true
@@ -559,7 +556,6 @@ margin_top = -76.0
 margin_right = 86.0
 margin_bottom = 225.0
 rect_min_size = Vector2( 89, 301 )
-texture = ExtResource( 15 )
 script = ExtResource( 16 )
 
 [node name="roads_btn" type="TextureButton" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu"]
@@ -697,3 +693,5 @@ script = ExtResource( 14 )
 [connection signal="pressed" from="Control/building_menu_btn" to="Control/building_menu_btn/building_menu" method="_on_building_menu_btn_pressed"]
 [connection signal="pressed" from="Control/building_menu_btn/building_menu/networks_btn" to="Control/building_menu_btn/building_menu/networks_btn/networks_menu" method="_on_networks_btn_pressed"]
 [connection signal="pressed" from="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn" to="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble" method="_on_rails_btn_pressed"]
+[connection signal="pressed" from="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble/rails" to="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble/rails" method="_on_rails_pressed"]
+[connection signal="pressed" from="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble/monorail" to="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble/monorail" method="_on_monorail_pressed"]

@@ -12,16 +12,12 @@ const WATER_HEIGHT : float = 250.0 / TILE_SIZE
 var terr_tile_ind = {}
 # translator from fsh-iid to texturearray layer
 var ind_layer
-# for cursor
-var cur_img
-var vec_hot
 
 func _ready():
 	rng.randomize()
 	savefile = Boot.current_city
 	create_terrain()
-	set_cursor()
-	pass
+	Player.set_cursor("normal")	
 
 func gen_random_terrain(_width : int, _height : int) -> Array:
 	var heightmap : Array = []
@@ -409,11 +405,7 @@ func create_terrain():
 	$Spatial/TestS3D.set_material_override(s3dmat)
 	print("DEBUG")
 	
-func set_cursor():
-	var TGI_cur = {"T": 0xaa5c3144, "G": 0x00000032, "I":0x13b138d0}
-	self.vec_hot = Core.subfile(TGI_cur["T"], TGI_cur["G"], TGI_cur["I"], CURSubfile).entries[0].vec_hotspot
-	self.cur_img = Core.subfile(TGI_cur["T"], TGI_cur["G"], TGI_cur["I"], CURSubfile).get_as_texture()
-	Input.set_custom_mouse_cursor(cur_img, Input.CURSOR_ARROW, vec_hot)
+
 	
 func coord_to_uv(x, y, z):
 	var TerrainTexTilingFactor = 0.2 # 0x6534284a,0x88cd66e9,0x00000001 describes this as 100m of terrain corresponds to this fraction of texture in farthest zoom
@@ -464,7 +456,8 @@ func get_normal(vert : Vector3, heightmap):
 func test_exemplar():
 	var TGI = {"T": 0x6534284a, "G": 0xea12f32c, "I": 0x5}
 	var exemplar = Core.subfile(TGI["T"], TGI["G"], TGI["I"], ExemplarSubfile)
-	print("ParentCohort", exemplar.parent_cohort)
+	#print("ParentCohort", exemplar.parent_cohort)
 	for key in exemplar.properties.keys():
-		print(key, "\t", exemplar.key_description(key), "\t", exemplar.properties[key])
+		pass
+		#print(key, "\t", exemplar.key_description(key), "\t", exemplar.properties[key])
 		

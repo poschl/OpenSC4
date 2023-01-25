@@ -17,6 +17,7 @@ var layer_map = []
 var map_width : int
 var map_height : int
 var drag_first = true
+
 #input
 var start_l = false
 var hold_l = false
@@ -144,7 +145,7 @@ func _input(event):
 			if event.button_index == 1:
 				self.start_l = self.mouse_ray()
 				self.hold_l = self.mouse_ray()
-				self._drag_network(self.start_l, self.hold_l, "Road")
+				self._drag_network(self.start_l, self.hold_l, Player.current_type_selected)
 		if not event.is_pressed():
 			if event.button_index == 1 and self.hold_l:
 				_build_network()
@@ -152,12 +153,12 @@ func _input(event):
 				self.hold_l = false
 	elif event is InputEventMouseMotion and start_l:
 		self.hold_l = self.mouse_ray()
-		self._drag_network(self.start_l, self.hold_l, "Road")
+		self._drag_network(self.start_l, self.hold_l, Player.current_type_selected)
 	elif event is InputEventKey:
 		if event.pressed and event.scancode == KEY_CONTROL:
 			self.drag_first = not self.drag_first
 			if self.start_l:
-				self._drag_network(self.start_l, self.hold_l, "Road")
+				self._drag_network(self.start_l, self.hold_l, Player.current_type_selected)
 		
 
 func mouse_ray():
@@ -411,6 +412,8 @@ func _drag_network(start, end, type):
 		var best_t_i = 0
 		var b_loc = edges[1][i]
 		var override = false
+		if type != "Road":
+			Logger.info(transit_tiles[type].keys())
 		for t_i in range(len(transit_tiles[type][edges[0][i]])):
 			var points = 0
 			var div = 0
