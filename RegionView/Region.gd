@@ -118,11 +118,11 @@ func DEBUG_output():
 	
 	#var subfile = Core.get_FSH_subfile(0x46a006b0, 0xab7052bd)
 	#var subfile = Core.subfile(0x856ddbac,0x1ABE787D, 0xcc1a735d, ImageSubfile)
-	var type_id = "PNG"
-	var _groups = Core.get_list_groups(type_id)
-	#print(groups)
 	
-	#DebugUtils._DEBUG_extract_files("PNG", "MENU_ICONS")
+	var groups = Core.get_list_groups("FSH")
+	print(groups)
+	
+	#DebugUtils._DEBUG_extract_files("FSH", "NONPROPS_ANIM")
 
 
 

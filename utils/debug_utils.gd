@@ -32,8 +32,17 @@ func _DEBUG_extract_files(type_id, group_id):
 			img.save_png(path)
 	elif type_id == "FSH":
 		for item in list_of_instances:
-			if item in []:
-				continue
+			if group_id == "TERRAIN_FOUNDATION":
+				if item in [168511582,2844133149,1241850078,150363558,1785503188,
+							3926250900,1777317624,2315584778,3390250065,3907687816,
+							2297930414,705018649,168104885,686526356,3381698488,
+							3917875077,2852457154,168107003,168107540,3395078592,
+							3395078593,687317218,3389326754,1778759430,3908538680,
+							1787072964,3387930407,]:
+					continue
+			if group_id == "":
+				if item in []:
+					continue
 			var subfile = Core.get_subfile(type_id, group_id, item)
 			var img = subfile.get_as_texture().get_data()
 			var path = "user://%s/%s/%s.png" % [type_id, group_id, item]

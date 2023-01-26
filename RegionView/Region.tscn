@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://RegionUI/RegionUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://RegionView/Region.gd" type="Script" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://scripts/regions/legend.gd" type="Script" id=26]
 [ext_resource path="res://scripts/regions/display_legend_btn.gd" type="Script" id=27]
 [ext_resource path="res://scripts/regions/minimalize_btn.gd" type="Script" id=28]
+[ext_resource path="res://scripts/regions/delete_region_btn.gd" type="Script" id=29]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -160,18 +161,26 @@ margin_bottom = 196.0
 script = ExtResource( 13 )
 
 [node name="new_region_btn" type="TextureButton" parent="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu"]
-margin_left = 50.0
+margin_left = 42.0
 margin_top = 124.0
-margin_right = 90.0
+margin_right = 82.0
 margin_bottom = 164.0
 script = ExtResource( 15 )
 
 [node name="open_region_btn" type="TextureButton" parent="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu"]
-margin_left = 125.0
+margin_left = 115.0
 margin_top = 126.0
-margin_right = 165.0
+margin_right = 155.0
 margin_bottom = 166.0
 script = ExtResource( 16 )
+
+[node name="delete_region_btn" type="TextureButton" parent="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu"]
+margin_left = 189.0
+margin_top = 122.0
+margin_right = 279.0
+margin_bottom = 177.0
+rect_min_size = Vector2( 90, 55 )
+script = ExtResource( 29 )
 
 [node name="show_city_names_btn" type="TextureButton" parent="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu"]
 margin_left = 320.0

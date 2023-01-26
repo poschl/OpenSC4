@@ -137,7 +137,7 @@ _global_script_classes=[ {
 "base": "DBPFSubfile",
 "class": "cSTETerrain__SaveAltitudes",
 "language": "GDScript",
-"path": "res://cSTETerrain__SaveAltitudes.gd"
+"path": "res://CityView/cSTETerrain__SaveAltitudes.gd"
 } ]
 _global_script_class_icons={
 "CURSubfile": "",

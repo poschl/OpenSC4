@@ -17,9 +17,9 @@ func _ready():
 	rng.randomize()
 	savefile = Boot.current_city
 	create_terrain()
-	Player.set_cursor("normal")	
+	Player.set_cursor("normal")
 
-func gen_random_terrain(_width : int, _height : int) -> Array:
+func gen_random_terrain(width : int, height : int) -> Array:
 	var heightmap : Array = []
 	var noise = OpenSimplexNoise.new()
 	noise.seed = randi()
@@ -389,12 +389,14 @@ func create_terrain():
 	warray_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, warrays)
 	$Spatial/WaterPlane.mesh = warray_mesh
 	
-	"test s3d"
+	"""
+	Plant some trees as a test
+	"""
 	var TGI_s3d = {"T": 0x5ad0e817, "G": 0xbadb57f1, "I":0x16620430}
 	var s3dobj = Core.subfile(TGI_s3d["T"], TGI_s3d["G"], TGI_s3d["I"], S3DSubfile)
 	var location = Vector3(width/2, heightmap[int(width/2)][int(self.height/2)] / TILE_SIZE, self.height/2)
-	for x in range(5):
-		for z in range(5):
+	for x in range(50):
+		for z in range(50):
 			var x_rand = (x-2.5) + randf()
 			var z_rand = (z-2.5) + randf()
 			var loc_rand = location + Vector3(x_rand, 0, z_rand)
@@ -402,8 +404,7 @@ func create_terrain():
 	test_exemplar()
 	var s3dmat = $Spatial/TestS3D.get_material_override()
 	s3dmat.set_shader_param("nois_texture", $Spatial/WaterPlane/NoiseTexture.texture)
-	$Spatial/TestS3D.set_material_override(s3dmat)
-	print("DEBUG")
+	$Spatial/TestS3D.set_material_override(s3dmat)	
 	
 
 	

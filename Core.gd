@@ -23,7 +23,8 @@ var type_dict_to_text = {
 	0xca63e2a3: "LUA",
 	0xe86b1eef: "DBDF",
 	0x00000000: "TEXT",
-	0xaa5c3144: "unknown_type1"
+	0xaa5c3144: "unknown_type1",
+	0x0a5bcf4b: "BRIDGE_RULES"
 }
 var group_dict_to_text = {
 	0x00000001: "VIDEO,BW_CURSOR",
@@ -82,7 +83,8 @@ var type_dict = {
 	"LUA": 0xca63e2a3,
 	"DBDF": 0xe86b1eef,
 	"TEXT": 0x00000000,
-	"unknown_type1": 0xaa5c3144
+	"unknown_type1": 0xaa5c3144,
+	"BRIDGE_RULES": 0x0a5bcf4b
 }
 var group_dict = {
 	"VIDEO,BW_CURSOR": 0x00000001,
@@ -138,8 +140,9 @@ var class_dict = {
 	"PNG": ImageSubfile,
 	"LUA": null,
 	"DBDF": DBPFSubfile,
-	"TEXT": null,
+	"TEXT": DBPFSubfile,
 	"unknown_type1": CURSubfile,
+	"BRIDGE_RULES": RULSubfile,
 }
 
 func _ready():
@@ -229,7 +232,7 @@ func subfile(type_id : int, group_id : int, instance_id : int, subfile_class) ->
 		return null
 	else:
 		var index = subfile_indices[[type_id, group_id, instance_id]]
-		Logger.error("Wrong instance: %d" % instance_id)
+		#Logger.error("DEBUG: Wrong instance: %d" % instance_id)
 		return index.dbpf.get_subfile(type_id, group_id, instance_id, subfile_class)
 
 func add_dbpf(dbpf : DBPF):

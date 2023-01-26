@@ -501,11 +501,13 @@ size = 292.0
 near = 1.0
 far = 200.0
 
-[node name="Control" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="building_menu_btn" type="TextureButton" parent="Control"]
+[node name="building_menu_btn" type="TextureButton" parent="CanvasLayer/Control"]
 margin_left = 100.0
 margin_top = 561.0
 margin_right = 160.0
@@ -513,7 +515,7 @@ margin_bottom = 607.0
 rect_min_size = Vector2( 60, 46 )
 script = ExtResource( 8 )
 
-[node name="building_menu" type="TextureRect" parent="Control/building_menu_btn"]
+[node name="building_menu" type="TextureRect" parent="CanvasLayer/Control/building_menu_btn"]
 margin_left = -95.0
 margin_top = -441.0
 margin_right = 62.0
@@ -524,7 +526,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="nature_btn" type="TextureButton" parent="Control/building_menu_btn/building_menu"]
+[node name="nature_btn" type="TextureButton" parent="CanvasLayer/Control/building_menu_btn/building_menu"]
 margin_left = 9.0
 margin_top = 16.0
 margin_right = 73.0
@@ -532,7 +534,7 @@ margin_bottom = 66.0
 rect_min_size = Vector2( 64, 50 )
 script = ExtResource( 9 )
 
-[node name="lands_btn" type="TextureButton" parent="Control/building_menu_btn/building_menu"]
+[node name="lands_btn" type="TextureButton" parent="CanvasLayer/Control/building_menu_btn/building_menu"]
 margin_left = 9.0
 margin_top = 66.0
 margin_right = 73.0
@@ -540,7 +542,7 @@ margin_bottom = 116.0
 rect_min_size = Vector2( 64, 50 )
 script = ExtResource( 11 )
 
-[node name="networks_btn" type="TextureButton" parent="Control/building_menu_btn/building_menu"]
+[node name="networks_btn" type="TextureButton" parent="CanvasLayer/Control/building_menu_btn/building_menu"]
 margin_left = 9.0
 margin_top = 116.0
 margin_right = 73.0
@@ -549,7 +551,7 @@ rect_min_size = Vector2( 64, 50 )
 toggle_mode = true
 script = ExtResource( 12 )
 
-[node name="networks_menu" type="TextureRect" parent="Control/building_menu_btn/building_menu/networks_btn"]
+[node name="networks_menu" type="TextureRect" parent="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn"]
 show_behind_parent = true
 margin_left = -3.0
 margin_top = -76.0
@@ -558,7 +560,7 @@ margin_bottom = 225.0
 rect_min_size = Vector2( 89, 301 )
 script = ExtResource( 16 )
 
-[node name="roads_btn" type="TextureButton" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu"]
+[node name="roads_btn" type="TextureButton" parent="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu"]
 margin_left = 73.0
 margin_top = 8.0
 margin_right = 120.0
@@ -566,7 +568,7 @@ margin_bottom = 45.0
 rect_min_size = Vector2( 47, 37 )
 script = ExtResource( 19 )
 
-[node name="highway_btn" type="TextureButton" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu"]
+[node name="highway_btn" type="TextureButton" parent="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu"]
 margin_left = 73.0
 margin_top = 60.0
 margin_right = 120.0
@@ -574,7 +576,7 @@ margin_bottom = 97.0
 rect_min_size = Vector2( 47, 37 )
 script = ExtResource( 22 )
 
-[node name="rails_btn" type="TextureButton" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu"]
+[node name="rails_btn" type="TextureButton" parent="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu"]
 margin_left = 73.0
 margin_top = 110.0
 margin_right = 120.0
@@ -583,7 +585,7 @@ rect_min_size = Vector2( 47, 37 )
 toggle_mode = true
 script = ExtResource( 17 )
 
-[node name="bubble" type="TextureRect" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn"]
+[node name="bubble" type="TextureRect" parent="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn"]
 show_behind_parent = true
 margin_left = -4.0
 margin_top = -10.0
@@ -591,7 +593,7 @@ margin_right = 36.0
 margin_bottom = 30.0
 script = ExtResource( 23 )
 
-[node name="rails" type="TextureButton" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble"]
+[node name="rails" type="TextureButton" parent="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble"]
 margin_left = 80.0
 margin_top = -140.0
 margin_right = 124.0
@@ -601,7 +603,7 @@ toggle_mode = true
 group = SubResource( 20 )
 script = ExtResource( 24 )
 
-[node name="passanger_station" type="TextureButton" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble"]
+[node name="passanger_station" type="TextureButton" parent="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble"]
 margin_left = 80.0
 margin_top = -92.0
 margin_right = 124.0
@@ -611,7 +613,7 @@ toggle_mode = true
 group = SubResource( 20 )
 script = ExtResource( 27 )
 
-[node name="cargo_station" type="TextureButton" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble"]
+[node name="cargo_station" type="TextureButton" parent="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble"]
 margin_left = 80.0
 margin_top = -44.0
 margin_right = 124.0
@@ -620,7 +622,7 @@ toggle_mode = true
 group = SubResource( 20 )
 script = ExtResource( 29 )
 
-[node name="big_station" type="TextureButton" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble"]
+[node name="big_station" type="TextureButton" parent="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble"]
 margin_left = 80.0
 margin_top = 4.0
 margin_right = 124.0
@@ -630,7 +632,7 @@ toggle_mode = true
 group = SubResource( 20 )
 script = ExtResource( 28 )
 
-[node name="monorail" type="TextureButton" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble"]
+[node name="monorail" type="TextureButton" parent="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble"]
 margin_left = 80.0
 margin_top = 60.0
 margin_right = 124.0
@@ -640,7 +642,7 @@ toggle_mode = true
 group = SubResource( 20 )
 script = ExtResource( 26 )
 
-[node name="monorail_station" type="TextureButton" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble"]
+[node name="monorail_station" type="TextureButton" parent="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble"]
 margin_left = 80.0
 margin_top = 116.0
 margin_right = 124.0
@@ -650,7 +652,7 @@ toggle_mode = true
 group = SubResource( 20 )
 script = ExtResource( 25 )
 
-[node name="comm_btn" type="TextureButton" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu"]
+[node name="comm_btn" type="TextureButton" parent="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu"]
 margin_left = 73.0
 margin_top = 162.0
 margin_right = 120.0
@@ -658,7 +660,7 @@ margin_bottom = 199.0
 rect_min_size = Vector2( 47, 37 )
 script = ExtResource( 21 )
 
-[node name="airport_btn" type="TextureButton" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu"]
+[node name="airport_btn" type="TextureButton" parent="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu"]
 margin_left = 73.0
 margin_top = 212.0
 margin_right = 120.0
@@ -666,7 +668,7 @@ margin_bottom = 249.0
 rect_min_size = Vector2( 47, 37 )
 script = ExtResource( 20 )
 
-[node name="seaport_btn" type="TextureButton" parent="Control/building_menu_btn/building_menu/networks_btn/networks_menu"]
+[node name="seaport_btn" type="TextureButton" parent="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu"]
 margin_left = 73.0
 margin_top = 260.0
 margin_right = 120.0
@@ -674,7 +676,7 @@ margin_bottom = 297.0
 rect_min_size = Vector2( 47, 37 )
 script = ExtResource( 18 )
 
-[node name="engineering_btn" type="TextureButton" parent="Control/building_menu_btn/building_menu"]
+[node name="engineering_btn" type="TextureButton" parent="CanvasLayer/Control/building_menu_btn/building_menu"]
 margin_left = 9.0
 margin_top = 167.0
 margin_right = 73.0
@@ -682,7 +684,7 @@ margin_bottom = 217.0
 rect_min_size = Vector2( 64, 50 )
 script = ExtResource( 13 )
 
-[node name="services_btn" type="TextureButton" parent="Control/building_menu_btn/building_menu"]
+[node name="services_btn" type="TextureButton" parent="CanvasLayer/Control/building_menu_btn/building_menu"]
 margin_left = 9.0
 margin_top = 220.0
 margin_right = 73.0
@@ -690,8 +692,8 @@ margin_bottom = 270.0
 rect_min_size = Vector2( 64, 50 )
 script = ExtResource( 14 )
 
-[connection signal="pressed" from="Control/building_menu_btn" to="Control/building_menu_btn/building_menu" method="_on_building_menu_btn_pressed"]
-[connection signal="pressed" from="Control/building_menu_btn/building_menu/networks_btn" to="Control/building_menu_btn/building_menu/networks_btn/networks_menu" method="_on_networks_btn_pressed"]
-[connection signal="pressed" from="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn" to="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble" method="_on_rails_btn_pressed"]
-[connection signal="pressed" from="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble/rails" to="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble/rails" method="_on_rails_pressed"]
-[connection signal="pressed" from="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble/monorail" to="Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble/monorail" method="_on_monorail_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/building_menu_btn" to="CanvasLayer/Control/building_menu_btn/building_menu" method="_on_building_menu_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn" to="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu" method="_on_networks_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn" to="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble" method="_on_rails_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble/rails" to="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble/rails" method="_on_rails_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble/monorail" to="CanvasLayer/Control/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble/monorail" method="_on_monorail_pressed"]

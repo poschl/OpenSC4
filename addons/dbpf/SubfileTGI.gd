@@ -20,7 +20,8 @@ static func get_file_type(type_id : int, group_id : int, instance_id : int) -> S
 		0x856ddbac: "PNG",
 		0xca63e2a3: "LUA",
 		0xe86b1eef: "DBDF",
-		0x00000000: "TEXT"
+		0x00000000: "TEXT",
+		0x0a5bcf4b: "BRIDGE_RULES"
 	}
 	var group_dict = {
 		0x00000001: "VIDEO,BW_CURSOR",
