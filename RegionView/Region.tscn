@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://RegionUI/RegionUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://RegionView/Region.gd" type="Script" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://scripts/regions/display_legend_btn.gd" type="Script" id=27]
 [ext_resource path="res://scripts/regions/minimalize_btn.gd" type="Script" id=28]
 [ext_resource path="res://scripts/regions/delete_region_btn.gd" type="Script" id=29]
+[ext_resource path="res://scripts/regions/new_region_dialog.gd" type="Script" id=30]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -430,8 +431,39 @@ margin_bottom = -5.0
 rect_min_size = Vector2( 21, 17 )
 script = ExtResource( 27 )
 
+[node name="new_region_dialog" type="Control" parent="UICanvas"]
+margin_left = 263.0
+margin_top = 164.0
+margin_right = 682.0
+margin_bottom = 451.0
+script = ExtResource( 30 )
+
+[node name="left_side_dialog" type="TextureRect" parent="UICanvas/new_region_dialog"]
+margin_right = 20.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 20, 180 )
+
+[node name="center_1" type="TextureRect" parent="UICanvas/new_region_dialog"]
+margin_left = 20.0
+margin_right = 160.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 140, 180 )
+
+[node name="center_2" type="TextureRect" parent="UICanvas/new_region_dialog"]
+margin_left = 160.0
+margin_right = 300.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 140, 180 )
+
+[node name="right_side_dialog" type="TextureRect" parent="UICanvas/new_region_dialog"]
+margin_left = 320.0
+margin_right = 340.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 20, 180 )
+
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn" to="UICanvas/Control2/HBoxContainer/regions_btn" method="_on_regions_btn_pressed"]
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn" to="UICanvas/settings" method="_on_regions_btn_pressed"]
+[connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/new_region_btn" to="UICanvas/new_region_dialog" method="_on_new_region_btn_pressed"]
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/show_city_names_btn" to="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/show_city_names_btn" method="_on_show_option1_btn_pressed"]
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/show_city_boundaries_btn" to="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/show_city_boundaries_btn" method="_on_show_city_boundaries_btn_pressed"]
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/satellite_btn" to="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/satellite_btn" method="_on_satellite_btn_pressed"]
@@ -443,3 +475,4 @@ script = ExtResource( 27 )
 [connection signal="pressed" from="UICanvas/legend/minimalize_btn" to="UICanvas/display_legend_btn" method="_on_minimalize_btn_pressed"]
 [connection signal="pressed" from="UICanvas/display_legend_btn" to="UICanvas/legend" method="_on_display_legend_btn_pressed"]
 [connection signal="pressed" from="UICanvas/display_legend_btn" to="UICanvas/display_legend_btn" method="_on_display_legend_btn_pressed"]
+[connection signal="gui_input" from="UICanvas/new_region_dialog" to="UICanvas/new_region_dialog" method="_on_new_region_dialog_gui_input"]

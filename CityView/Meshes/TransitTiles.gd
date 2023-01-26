@@ -78,10 +78,40 @@ func _ready():
 	0x0000016 : "Monorail",
 	0x0000017 : "Ground Highway",
 	0x0000018 : "Ground Highway"}
+	
+	# Load all the rules and create files
+	var a = {}
+	for rule_id in rul_iid_types:
+		Core.get_subfile("BRIDGE_RULES", "BRIDGE_RULES", rule_id)
+	var files = ["user://rules/HighwayRules.txt", "user://rules/RailRules.txt", "user://rules/RoadRules.txt", "user://rules/Transmogrif.txt"]
+	for name in files:
+		var source = File.new()
+		var filtred = File.new()
+		source.open(name, File.READ)
+		var just_name = name.split('.')[0]
+		filtred.open("%s_filtred.txt " % just_name, File.WRITE)
+		a[just_name] = {}
+		while not source.eof_reached():
+			var line = source.get_line()
+			if len(line) > 0:
+				if line[0] != ';' and line[0] != '#':
+					filtred.store_line(line)
+		source.close()
+		filtred.close()
+	
+	
+	
+	
+	
+	
+	# OLD CODE
+	
+	
 	# it gets messy here, not sure how to make this not a tonne of loops without sacrificing fast lookups when drawing
 	# iter rul files
 	for RUL_id in rul_iid_types.keys():
 		var t_type = rul_iid_types[RUL_id]
+		#print("TRANSIT_TILES: ", transit_tiles)
 		if not self.transit_tiles.keys().has(t_type):
 			self.transit_tiles[t_type] = {}
 		var rul_dict = Core.subfile(0x0a5bcf4b, 0xaa5bcf57, RUL_id, RULSubfile).RUL_wnes
@@ -412,8 +442,8 @@ func _drag_network(start, end, type):
 		var best_t_i = 0
 		var b_loc = edges[1][i]
 		var override = false
-		if type != "Road":
-			Logger.info(transit_tiles[type].keys())
+		#if type != "Road":
+		#	Logger.info(transit_tiles[type].keys())
 		for t_i in range(len(transit_tiles[type][edges[0][i]])):
 			var points = 0
 			var div = 0
