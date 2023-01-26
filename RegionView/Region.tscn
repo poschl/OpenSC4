@@ -455,12 +455,6 @@ margin_right = 300.0
 margin_bottom = 180.0
 rect_min_size = Vector2( 140, 180 )
 
-[node name="right_side_dialog" type="TextureRect" parent="UICanvas/new_region_dialog"]
-margin_left = 320.0
-margin_right = 340.0
-margin_bottom = 180.0
-rect_min_size = Vector2( 20, 180 )
-
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn" to="UICanvas/Control2/HBoxContainer/regions_btn" method="_on_regions_btn_pressed"]
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn" to="UICanvas/settings" method="_on_regions_btn_pressed"]
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/new_region_btn" to="UICanvas/new_region_dialog" method="_on_new_region_btn_pressed"]

@@ -25,12 +25,9 @@ func _ready():
 func _on_transport_btn_pressed():
 	Core.satellite_view = false
 	self.set_button(inactive_btn)
-	self.get_parent().get_child(5).set_button(active_btn)
-	
-		
-
+	self.get_parent().get_child(6).set_button(active_btn)
 
 func _on_satellite_btn_pressed():
 	Core.satellite_view = true
 	self.set_button(active_btn)
-	self.get_parent().get_child(5).set_button(inactive_btn)	
+	self.get_parent().get_child(6).set_button(inactive_btn)	

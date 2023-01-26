@@ -27,11 +27,6 @@ func _ready():
 	center_2.texture.atlas = dialog_texture
 	center_2.texture.region = Rect2(20,0,160,180)
 	
-	var right_side_dialog = self.get_child(3)
-	right_side_dialog.texture = AtlasTexture.new()
-	right_side_dialog.texture.atlas = dialog_texture
-	right_side_dialog.texture.region = Rect2(160,0,180,180)
-
 	#self.visible = false
 
 
