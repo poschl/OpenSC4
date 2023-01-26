@@ -1,18 +1,8 @@
 extends Node2D
 
-var REGION_NAME = "Timbuktu"
 var region_w = 0
 var region_h = 0
 var cities = {}
-
-
-
-
-func _init():
-	Logger.info("Initializing the region view")
-	
-	# Open the region INI file
-	#var _ini = INISubfile.new("res://Regions/%s/region.ini" % REGION_NAME)
 
 
 func anchror_sort(a, b):
@@ -22,22 +12,26 @@ func anchror_sort(a, b):
 		return a[2] > b[2]
 
 func _ready():
-	Logger.info("Region node is ready")	
+	
 	$RadioPlayer.play_music()
-	var total_pop = 0
+	
 	for city in self.get_children():
 		if city is RegionCityView:
 			city.display()
-			total_pop += city.get_total_pop()
-	Logger.info("Total population: %d" % [total_pop])
+	
+	
 	# Count the city files in the region folder
 	# City files end in .sc4
 	var files = []
 	var dir = Directory.new()
-	var err = dir.open(Core.game_dir + '/Regions/%s/' % REGION_NAME)
+	var err = dir.open(Core.game_dir + '/Regions/%s/' % Core.current_region_name)
 	if err != OK:
 		Logger.error('Error opening region directory: %s' % err)
-		return
+		# If there is an error set Timbuktu and try again
+		Core.current_region_name = "Timbuktu"
+		err = dir.open(Core.game_dir + '/Regions/%s/' % Core.current_region_name)
+		if err != OK:
+			return
 	dir.list_dir_begin()
 	while true:
 		var file = dir.get_next()
@@ -50,7 +44,7 @@ func _ready():
 	var anchor = []
 	for f in files:
 		var city = load("res://RegionUI/RegionCityView.tscn").instance()
-		city.init('res://Regions/%s/%s' % [REGION_NAME, f])
+		city.init('res://Regions/%s/%s' % [Core.current_region_name, f])
 		var x : int = city.city_info.location[0]
 		var y : int = city.city_info.location[1]
 		var width : int = city.city_info.size[0]
@@ -59,6 +53,7 @@ func _ready():
 		anchor.append([vert_comp, city, width])
 	anchor.sort_custom(self, "anchror_sort")
 	
+	var total_pop : int = 0
 	for anch in anchor:
 		var city = anch[1]
 		var x : int = city.city_info.location[0]
@@ -69,11 +64,14 @@ func _ready():
 			for j in range(y, y+height): 
 				$BaseGrid.cities[i][j] = city
 		$BaseGrid.add_child(city)
+		total_pop = total_pop + city.get_total_population()
+	$UICanvas/Control/bottom_left_menu/region_name.text=Core.current_region_name
+	$UICanvas/Control/bottom_left_menu/total_population.text = str(total_pop)
 	Player.set_cursor("normal")
 	DEBUG_output()
 
 func read_config_bmp():
-	var region_config = load("res://Regions/%s/config.bmp" % REGION_NAME).get_data()
+	var region_config = load("res://Regions/%s/config.bmp" % Core.current_region_name).get_data()
 	# Iterate over the pixels
 	$BaseGrid.init_cities_array(region_config.get_width(), region_config.get_height())
 	region_w = region_config.get_width()

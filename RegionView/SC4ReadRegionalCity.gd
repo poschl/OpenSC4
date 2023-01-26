@@ -28,3 +28,7 @@ func load(file, dbdf=null):
 func is_populated() -> bool:
 	return self.population_residential > 0 or self.population_commercial > 0 or self.population_industrial > 0
 	
+func get_total_population() -> int:
+	return self.population_residential + self.population_commercial + self.population_industrial
+	
+	

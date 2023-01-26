@@ -7,6 +7,8 @@ extends Control
 
 var drag_position = null # null = not in dragging state
 
+var plain_or_water : bool = true # Plains option = true(default) and Water = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

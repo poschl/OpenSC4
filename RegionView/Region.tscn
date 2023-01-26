@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://RegionUI/RegionUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://RegionView/Region.gd" type="Script" id=2]
@@ -30,15 +30,28 @@
 [ext_resource path="res://scripts/regions/minimalize_btn.gd" type="Script" id=28]
 [ext_resource path="res://scripts/regions/delete_region_btn.gd" type="Script" id=29]
 [ext_resource path="res://scripts/regions/new_region_dialog.gd" type="Script" id=30]
+[ext_resource path="res://scripts/regions/plains_btn.gd" type="Script" id=31]
+[ext_resource path="res://scripts/regions/water_btn.gd" type="Script" id=32]
+[ext_resource path="res://scripts/regions/create_reagion_btn.gd" type="Script" id=33]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
 [sub_resource type="ImageTexture" id=2]
 
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 5.0
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.223529, 0.286275, 0.388235, 1 )
+border_blend = true
+
 [node name="Region" type="Node2D"]
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_vertical_guides_": [ 802.0, 1184.0 ]
+"_edit_vertical_guides_": [ 802.0, 1184.0, 275.0, 460.0 ]
 }
 
 [node name="BaseGrid" type="TileMap" parent="."]
@@ -455,6 +468,107 @@ margin_right = 300.0
 margin_bottom = 180.0
 rect_min_size = Vector2( 140, 180 )
 
+[node name="LineEdit" type="LineEdit" parent="UICanvas/new_region_dialog"]
+margin_left = 23.0
+margin_top = 49.0
+margin_right = 297.0
+margin_bottom = 73.0
+custom_colors/selection_color = Color( 0.223529, 0.286275, 0.388235, 1 )
+custom_colors/cursor_color = Color( 0.223529, 0.286275, 0.388235, 1 )
+custom_colors/clear_button_color_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0.223529, 0.286275, 0.388235, 1 )
+custom_colors/clear_button_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_uneditable = Color( 0, 0, 0, 1 )
+custom_styles/normal = SubResource( 3 )
+placeholder_text = "new region name"
+
+[node name="Label" type="Label" parent="UICanvas/new_region_dialog"]
+modulate = Color( 0.223529, 0.286275, 0.388235, 1 )
+margin_left = 20.0
+margin_top = 15.0
+margin_right = 105.0
+margin_bottom = 29.0
+text = "Region Name"
+
+[node name="Label2" type="Label" parent="UICanvas/new_region_dialog"]
+modulate = Color( 0.223529, 0.286275, 0.388235, 1 )
+margin_left = 23.0
+margin_top = 85.0
+margin_right = 106.0
+margin_bottom = 99.0
+text = "Initial terrain"
+
+[node name="plains_btn" type="TextureButton" parent="UICanvas/new_region_dialog"]
+margin_left = 22.0
+margin_top = 111.0
+margin_right = 39.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 17, 17 )
+script = ExtResource( 31 )
+
+[node name="Label" type="Label" parent="UICanvas/new_region_dialog/plains_btn"]
+modulate = Color( 0.223529, 0.286275, 0.388235, 1 )
+margin_left = 23.0
+margin_top = 2.0
+margin_right = 63.0
+margin_bottom = 16.0
+text = "Plains"
+
+[node name="water_btn" type="TextureButton" parent="UICanvas/new_region_dialog"]
+margin_left = 129.0
+margin_top = 111.0
+margin_right = 146.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 17, 17 )
+script = ExtResource( 32 )
+
+[node name="Label" type="Label" parent="UICanvas/new_region_dialog/water_btn"]
+modulate = Color( 0.223529, 0.286275, 0.388235, 1 )
+margin_left = 25.0
+margin_top = 2.0
+margin_right = 65.0
+margin_bottom = 16.0
+text = "Water"
+
+[node name="create_reagion_btn" type="TextureButton" parent="UICanvas/new_region_dialog"]
+margin_left = 11.0
+margin_top = 165.0
+margin_right = 191.0
+margin_bottom = 195.0
+script = ExtResource( 33 )
+
+[node name="Label" type="Label" parent="UICanvas/new_region_dialog/create_reagion_btn"]
+modulate = Color( 0.223529, 0.286275, 0.388235, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.0
+margin_top = -7.0
+margin_right = 44.0
+margin_bottom = 7.0
+text = "Create Region"
+
+[node name="cancel_btn" type="TextureButton" parent="UICanvas/new_region_dialog"]
+margin_left = 199.0
+margin_top = 165.0
+margin_right = 379.0
+margin_bottom = 195.0
+script = ExtResource( 33 )
+
+[node name="Label" type="Label" parent="UICanvas/new_region_dialog/cancel_btn"]
+modulate = Color( 0.223529, 0.286275, 0.388235, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -21.0
+margin_top = -7.0
+margin_right = 21.0
+margin_bottom = 7.0
+text = "Cancel"
+
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn" to="UICanvas/Control2/HBoxContainer/regions_btn" method="_on_regions_btn_pressed"]
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn" to="UICanvas/settings" method="_on_regions_btn_pressed"]
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/new_region_btn" to="UICanvas/new_region_dialog" method="_on_new_region_btn_pressed"]
@@ -470,3 +584,6 @@ rect_min_size = Vector2( 140, 180 )
 [connection signal="pressed" from="UICanvas/display_legend_btn" to="UICanvas/legend" method="_on_display_legend_btn_pressed"]
 [connection signal="pressed" from="UICanvas/display_legend_btn" to="UICanvas/display_legend_btn" method="_on_display_legend_btn_pressed"]
 [connection signal="gui_input" from="UICanvas/new_region_dialog" to="UICanvas/new_region_dialog" method="_on_new_region_dialog_gui_input"]
+[connection signal="pressed" from="UICanvas/new_region_dialog/plains_btn" to="UICanvas/new_region_dialog/plains_btn" method="_on_plains_btn_pressed"]
+[connection signal="pressed" from="UICanvas/new_region_dialog/water_btn" to="UICanvas/new_region_dialog/plains_btn" method="_on_water_btn_pressed"]
+[connection signal="pressed" from="UICanvas/new_region_dialog/cancel_btn" to="UICanvas/new_region_dialog/cancel_btn" method="_on_cancel_btn_pressed"]

@@ -69,8 +69,8 @@ func display(): # TODO city edges override other cities causing glitches, can be
 	$Thumbnail.texture = thumbnail_texture
 	$CollisionShape.shape.extents = Vector2(thumbnail_texture.get_width() / 2, thumbnail_texture.get_height() / 2)
 
-func get_total_pop():
-	return city_info.population_residential
+func get_total_population() -> int:
+	return city_info.get_total_population()
 
 func save_thumbnail():
 	region_view_thumbnails[0].get_data().save_png("region_view_thumbnail.png")
@@ -123,7 +123,7 @@ func prepare_dialog():
 		dialog = dialog_res.instance()
 		dialog.get_child(3).text = str(city_info.population_residential)
 		dialog.get_child(4).text = str(city_info.population_commercial)
-		dialog.get_child(5).text = str(city_info.population_industrial)		
+		dialog.get_child(5).text = str(city_info.population_industrial)
 	else:
 		dialog_res = load(new_city_dialog_path)
 		dialog = dialog_res.instance()

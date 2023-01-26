@@ -10,6 +10,7 @@ var config_path = "user://config.ini"
 var show_city_names : bool = true
 var show_city_boundaries : bool = false
 var satellite_view : bool = true # true for SatelliteView, false for Transportation Map
+var current_region_name : String = "Timbuktu"
 
 var type_dict_to_text = {
 	0x6534284a: "LTEXT",
@@ -261,11 +262,13 @@ func read_user_config():
 		return
 	if config.has_section("PlayerSettings"):
 		if config.has_section_key("PlayerSettings", "show_city_names"):
-			show_city_names = config.get_value("PlayerSettings", "show_city_names")
+			self.show_city_names = config.get_value("PlayerSettings", "show_city_names")
 		if config.has_section_key("PlayerSettings", "show_city_boundaries"):
-			show_city_boundaries = config.get_value("PlayerSettings", "show_city_boundaries")
+			self.show_city_boundaries = config.get_value("PlayerSettings", "show_city_boundaries")
 		if config.has_section_key("PlayerSettings", "satellite_view"):
-			show_city_boundaries = config.get_value("PlayerSettings", "satellite_view")	
+			self.show_city_boundaries = config.get_value("PlayerSettings", "satellite_view")
+		if config.has_section_key("PlayerSettings", "region_name"):
+			self.current_region_name = config.get_value("PlayerSettings", "region_name")
 			
 
 func _exit_tree():
@@ -281,7 +284,8 @@ func save_user_configuration():
 	if error != 0:
 		Logger.error("Cannot open config. %d", error)
 		return
-	config.set_value("PlayerSettings", "show_city_names", self. show_city_names)
-	config.set_value("PlayerSettings", "show_city_boundaries", self. show_city_boundaries)
-	config.set_value("PlayerSettings", "satellite_view", self. satellite_view)
+	config.set_value("PlayerSettings", "show_city_names", self.show_city_names)
+	config.set_value("PlayerSettings", "show_city_boundaries", self.show_city_boundaries)
+	config.set_value("PlayerSettings", "satellite_view", self.satellite_view)
+	config.set_value("PlayerSettings", "region_name", self.current_region_name)
 	config.save(config_path)
