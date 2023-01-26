@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://RegionUI/RegionUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://RegionView/Region.gd" type="Script" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://scripts/regions/plains_btn.gd" type="Script" id=31]
 [ext_resource path="res://scripts/regions/water_btn.gd" type="Script" id=32]
 [ext_resource path="res://scripts/regions/create_reagion_btn.gd" type="Script" id=33]
+[ext_resource path="res://scripts/regions/load_region_dialog.gd" type="Script" id=34]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -447,8 +448,8 @@ script = ExtResource( 27 )
 [node name="new_region_dialog" type="Control" parent="UICanvas"]
 margin_left = 263.0
 margin_top = 164.0
-margin_right = 682.0
-margin_bottom = 451.0
+margin_right = 303.0
+margin_bottom = 204.0
 script = ExtResource( 30 )
 
 [node name="left_side_dialog" type="TextureRect" parent="UICanvas/new_region_dialog"]
@@ -532,6 +533,7 @@ margin_bottom = 16.0
 text = "Water"
 
 [node name="create_reagion_btn" type="TextureButton" parent="UICanvas/new_region_dialog"]
+visible = false
 margin_left = 11.0
 margin_top = 165.0
 margin_right = 191.0
@@ -551,6 +553,7 @@ margin_bottom = 7.0
 text = "Create Region"
 
 [node name="cancel_btn" type="TextureButton" parent="UICanvas/new_region_dialog"]
+visible = false
 margin_left = 199.0
 margin_top = 165.0
 margin_right = 379.0
@@ -569,9 +572,44 @@ margin_right = 21.0
 margin_bottom = 7.0
 text = "Cancel"
 
+[node name="load_region_dialog" type="Control" parent="UICanvas"]
+margin_left = 683.0
+margin_top = 314.0
+margin_right = 723.0
+margin_bottom = 354.0
+script = ExtResource( 34 )
+
+[node name="left_side_dialog" type="TextureRect" parent="UICanvas/load_region_dialog"]
+margin_right = 20.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 20, 180 )
+
+[node name="center_1" type="TextureRect" parent="UICanvas/load_region_dialog"]
+margin_left = 20.0
+margin_right = 160.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 140, 180 )
+
+[node name="center_2" type="TextureRect" parent="UICanvas/load_region_dialog"]
+margin_left = 160.0
+margin_right = 300.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 140, 180 )
+
+[node name="Label" type="Label" parent="UICanvas/load_region_dialog"]
+modulate = Color( 0.223529, 0.286275, 0.388235, 1 )
+margin_left = 15.0
+margin_top = 14.0
+margin_right = 92.0
+margin_bottom = 28.0
+text = "Load Region"
+
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn" to="UICanvas/Control2/HBoxContainer/regions_btn" method="_on_regions_btn_pressed"]
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn" to="UICanvas/settings" method="_on_regions_btn_pressed"]
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/new_region_btn" to="UICanvas/new_region_dialog" method="_on_new_region_btn_pressed"]
+[connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/new_region_btn" to="UICanvas/load_region_dialog" method="_on_new_region_btn_pressed"]
+[connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/open_region_btn" to="UICanvas/new_region_dialog" method="_on_open_region_btn_pressed"]
+[connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/open_region_btn" to="UICanvas/load_region_dialog" method="_on_open_region_btn_pressed"]
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/show_city_names_btn" to="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/show_city_names_btn" method="_on_show_option1_btn_pressed"]
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/show_city_boundaries_btn" to="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/show_city_boundaries_btn" method="_on_show_city_boundaries_btn_pressed"]
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/satellite_btn" to="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/satellite_btn" method="_on_satellite_btn_pressed"]
@@ -587,3 +625,4 @@ text = "Cancel"
 [connection signal="pressed" from="UICanvas/new_region_dialog/plains_btn" to="UICanvas/new_region_dialog/plains_btn" method="_on_plains_btn_pressed"]
 [connection signal="pressed" from="UICanvas/new_region_dialog/water_btn" to="UICanvas/new_region_dialog/plains_btn" method="_on_water_btn_pressed"]
 [connection signal="pressed" from="UICanvas/new_region_dialog/cancel_btn" to="UICanvas/new_region_dialog/cancel_btn" method="_on_cancel_btn_pressed"]
+[connection signal="gui_input" from="UICanvas/load_region_dialog" to="UICanvas/load_region_dialog" method="_on_load_region_dialog_gui_input"]

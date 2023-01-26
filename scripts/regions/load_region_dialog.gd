@@ -1,16 +1,8 @@
 extends Control
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var drag_position = null # null = not in dragging state
 
-var plain_or_water : bool = true # Plains option = true(default) and Water = false
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	var dialog_texture = Core.get_subfile("PNG", "UI_IMAGE", 339829230).get_as_texture()
 	
@@ -28,20 +20,10 @@ func _ready():
 	center_2.texture = AtlasTexture.new()
 	center_2.texture.atlas = dialog_texture
 	center_2.texture.region = Rect2(20,0,160,180)
-	
-	#self.visible = false
 
+	self.visible = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
-func _on_new_region_btn_pressed():
-	self.visible = ! self.visible
-
-
-func _on_new_region_dialog_gui_input(event):
+func _on_load_region_dialog_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.pressed:
 			# Start dragging
@@ -52,5 +34,10 @@ func _on_new_region_dialog_gui_input(event):
 	if event is InputEventMouseMotion and drag_position:
 		rect_global_position = get_global_mouse_position() - drag_position
 
+
 func _on_open_region_btn_pressed():
+	self.visible = ! self.visible
+
+
+func _on_new_region_btn_pressed():
 	self.visible = false
