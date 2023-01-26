@@ -29,7 +29,7 @@ func _ready():
 	center_2.texture.atlas = dialog_texture
 	center_2.texture.region = Rect2(20,0,160,180)
 	
-	#self.visible = false
+	self.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -67,6 +67,7 @@ func _ready():
 		total_pop = total_pop + city.get_total_population()
 	$UICanvas/Control/bottom_left_menu/region_name.text=Core.current_region_name
 	$UICanvas/Control/bottom_left_menu/total_population.text = str(total_pop)
+	
 	Player.set_cursor("normal")
 	DEBUG_output()
 

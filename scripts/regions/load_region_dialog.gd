@@ -20,8 +20,12 @@ func _ready():
 	center_2.texture = AtlasTexture.new()
 	center_2.texture.atlas = dialog_texture
 	center_2.texture.region = Rect2(20,0,160,180)
+	
+	
+	#self.visible = false
 
-	self.visible = false
+		
+	
 
 func _on_load_region_dialog_gui_input(event):
 	if event is InputEventMouseButton:
