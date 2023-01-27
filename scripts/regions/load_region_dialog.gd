@@ -45,3 +45,8 @@ func _on_open_region_btn_pressed():
 
 func _on_new_region_btn_pressed():
 	self.visible = false
+
+
+func _on_cancel_btn_pressed():
+	self.visible = false
+

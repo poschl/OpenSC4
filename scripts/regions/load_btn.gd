@@ -31,7 +31,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-func _on_cancel_btn_pressed():
-	self.get_parent().visible = false
