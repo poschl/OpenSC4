@@ -160,7 +160,7 @@ func translate_CUR_type_to_number(type):
 	
 	return 1 # which is type 1
 
-func dir_contents(path):
+func dir_contents(path, filter_extension=""):
 	var dirs = []
 	var files = []
 	var dir = Directory.new()
@@ -171,7 +171,11 @@ func dir_contents(path):
 			if dir.current_is_dir():
 				dirs.append(file_name)
 			else:
-				files.append(file_name)
+				if filter_extension:
+					if file_name.ends_with(filter_extension):
+						files.append(file_name)
+				else:
+					files.append(file_name)
 			file_name = dir.get_next()
 	else:
 		Logger.error("An error occurred when trying to access the path.")

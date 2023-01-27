@@ -16,6 +16,16 @@ func init_cities_array(width_, height_):
 		for _j in range(height_):
 			cities[i].append(null)
 
+func clear_everything():
+	last_city_hovered = null
+	last_city_selected = null
+	width = 0
+	height = 0
+	for city in cities:
+		for place in city:
+			if place:
+				place.queue_free()
+
 func _unhandled_input(event):
 
 	if event is InputEventMouseButton and event.pressed:

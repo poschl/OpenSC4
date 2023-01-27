@@ -11,30 +11,22 @@ func anchror_sort(a, b):
 	else: # bigger tile first
 		return a[2] > b[2]
 
-func _ready():
-	
-	$RadioPlayer.play_music()
-	
+func clear_region():
+	$BaseGrid.clear_everything()
+	$BaseGrid.clear()
+	cities.clear()
+
+func load_region():
+	clear_region()
 	# Count the city files in the region folder
 	# City files end in .sc4
-	var files = []
-	var dir = Directory.new()
-	var err = dir.open(Core.game_dir + '/Regions/%s/' % Core.current_region_name)
-	if err != OK:
-		Logger.error('Error opening region directory: %s' % err)
-		# If there is an error set Timbuktu and try again
-		Core.current_region_name = "Timbuktu"
-		err = dir.open(Core.game_dir + '/Regions/%s/' % Core.current_region_name)
-		if err != OK:
-			return
-	dir.list_dir_begin()
-	while true:
-		var file = dir.get_next()
-		if file == "":
-			break
-		if file.ends_with('.sc4'):
-			files.append(file)
-	dir.list_dir_end()
+	var path = Core.game_dir + '/Regions/%s/' % Core.current_region_name
+	var files = Utils.dir_contents(path, ".sc4").files
+
+	
+
+	
+	
 	self.read_config_bmp()
 	var anchor = []
 	for f in files:
@@ -60,11 +52,14 @@ func _ready():
 				$BaseGrid.cities[i][j] = city
 		$BaseGrid.add_child(city)
 		total_pop = total_pop + city.get_total_population()
-		
-		
+
 	$UICanvas/Control/bottom_left_menu/region_name.text=Core.current_region_name
-	$UICanvas/Control/bottom_left_menu/total_population.text = str(total_pop)	
+	$UICanvas/Control/bottom_left_menu/total_population.text = str(total_pop)
+
+func _ready():
+	$RadioPlayer.play_music()
 	Player.set_cursor("normal")
+	load_region()
 	DEBUG_output()
 
 func read_config_bmp():
@@ -123,3 +118,7 @@ func DEBUG_output():
 
 
 
+
+
+func _on_load_btn_pressed(region_to_load):
+	Logger.info("Region to load: %s " % region_to_load)
