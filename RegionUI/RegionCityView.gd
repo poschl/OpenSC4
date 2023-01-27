@@ -4,7 +4,7 @@ class_name RegionCityView
 var region_view_thumbnails : Array = []
 var savefile : DBPF
 var city_info : SC4ReadRegionalCity
-var settings = {"borders":true}
+var settings = {"borders":false}
 
 # Size, in pixels, of the tile base
 
@@ -18,7 +18,11 @@ var dialog : Node = null
 onready var outline_shader = preload("res://shaders/region_outline.shader")
 
 func init(filepath : String):
-	# This is called from Region _ready
+	"""
+	This is called from Region _ready
+	Each save file means one region so filepath is .sc4
+	"""
+	
 	savefile = DBPF.new(filepath)
 	
 	# Load the thumbnails
@@ -39,6 +43,8 @@ func display(): # TODO city edges override other cities causing glitches, can be
 	#print(region_view_thumbnails[0].get_data().data["height"], region_view_thumbnails[0].get_data().data["width"], "\t", region_view_thumbnails[1].get_data().data["height"], region_view_thumbnails[1].get_data().data["width"])
 	var mystery_img = region_view_thumbnails[1].get_data()
 	var region_img = region_view_thumbnails[0].get_data()
+	mystery_img.save_png("user://mystery.png")
+	region_img.save_png("user://region.png")
 	mystery_img.lock()
 	region_img.lock()
 	var min_h = mystery_img.data["height"]
@@ -59,6 +65,7 @@ func display(): # TODO city edges override other cities causing glitches, can be
 	#var trim = Rect2(Vector2(float(min_w), float(min_h)), Vector2(mystery_img.data["width"], mystery_img.data["height"]))
 	#var trimmed = region_img.get_rect(trim)
 	var thumbnail_texture = ImageTexture.new()
+	#region_img.save_png("user://region_done.png")
 	thumbnail_texture.create_from_image(region_img, 0)
 	var expected_height = 63.604 * city_info.size[1]
 	# Adjust the tile placement
@@ -99,12 +106,7 @@ func toggle_dialog():
 	dialog.visible = !dialog.visible
 	var center = get_texture_center()
 	dialog.set_position(center)
-	
-	
-	
-	#var pos = Vector2( 0, -dialog_texture.texture.get_height()*0.66)
-	#dialog_texture.set_position(pos)
-	
+	# TODO: Need to set the position of the dialog properly
 	
 func get_texture_center():
 	var width = $Thumbnail.texture.get_width()
@@ -117,6 +119,13 @@ func get_texture_center():
 	
 	
 func prepare_dialog():
+	"""
+	When click on the RegionView the dialog pops up
+	and it's tow types, start new city and continue 
+	with already established city. Second one provides
+	some additional information like: population in
+	RCI and mayor rating etc.
+	"""
 	var dialog_res = null
 	if self.city_info.is_populated():
 		dialog_res = load(existing_city_dialog_path)
