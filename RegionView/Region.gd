@@ -15,11 +15,6 @@ func _ready():
 	
 	$RadioPlayer.play_music()
 	
-	for city in self.get_children():
-		if city is RegionCityView:
-			city.display()
-	
-	
 	# Count the city files in the region folder
 	# City files end in .sc4
 	var files = []
@@ -65,9 +60,10 @@ func _ready():
 				$BaseGrid.cities[i][j] = city
 		$BaseGrid.add_child(city)
 		total_pop = total_pop + city.get_total_population()
+		
+		
 	$UICanvas/Control/bottom_left_menu/region_name.text=Core.current_region_name
-	$UICanvas/Control/bottom_left_menu/total_population.text = str(total_pop)
-	
+	$UICanvas/Control/bottom_left_menu/total_population.text = str(total_pop)	
 	Player.set_cursor("normal")
 	DEBUG_output()
 
