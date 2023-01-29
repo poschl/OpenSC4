@@ -47,4 +47,10 @@ func _on_screenshot_rect_gui_input(event):
 
 
 func _on_screenshot_btn_pressed():
+	# Signal from region - RegionView
+	self.visible = true
+
+
+func _on_snapshot_btn_pressed():
+	# Signal from game - CityView
 	self.visible = true
