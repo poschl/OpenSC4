@@ -23,14 +23,12 @@ func load_region():
 	var path = Core.game_dir + '/Regions/%s/' % Core.current_region_name
 	var files = Utils.dir_contents(path, ".sc4").files
 
-	
-
-	
-	
 	self.read_config_bmp()
+	
 	var anchor = []
 	for f in files:
 		var city = load("res://RegionUI/RegionCityView.tscn").instance()
+		# Initialiaize the region view
 		city.init('res://Regions/%s/%s' % [Core.current_region_name, f])
 		var x : int = city.city_info.location[0]
 		var y : int = city.city_info.location[1]
@@ -60,7 +58,7 @@ func _ready():
 	$RadioPlayer.play_music()
 	Player.set_cursor("normal")
 	load_region()
-	DEBUG_output()
+	#DEBUG_output()
 
 func read_config_bmp():
 	var region_config = load("res://Regions/%s/config.bmp" % Core.current_region_name).get_data()
@@ -122,3 +120,6 @@ func DEBUG_output():
 
 func _on_load_btn_pressed(region_to_load):
 	Logger.info("Region to load: %s " % region_to_load)
+
+
+

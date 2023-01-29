@@ -262,6 +262,13 @@ func create_terrain():
 		heightmap = load_city_terrain(savefile)
 	else:
 		heightmap = gen_random_terrain(size_w * 64 + 1, size_h * 64 + 1)
+		
+	heightmap = gen_random_terrain(size_w * 64 + 1, size_h * 64 + 1)
+	var h = File.new()
+	h.open("user://heightmap.txt", File.WRITE)
+	h.store_csv_line(heightmap)
+	h.close()
+		
 	$Spatial/WaterPlane.generate_wateredges(heightmap)
 	var tiles_w = size_w * 64
 	var tiles_h = size_h * 64

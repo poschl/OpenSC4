@@ -41,8 +41,10 @@ func display(): # TODO city edges override other cities causing glitches, can be
 	#var thumbnail_texture : Texture = region_view_thumbnails[0]
 	# The height of a tile if it were completely flat
 	#print(region_view_thumbnails[0].get_data().data["height"], region_view_thumbnails[0].get_data().data["width"], "\t", region_view_thumbnails[1].get_data().data["height"], region_view_thumbnails[1].get_data().data["width"])
+	#var another = region_view_thumbnails[2].get_data()
 	var mystery_img = region_view_thumbnails[1].get_data()
 	var region_img = region_view_thumbnails[0].get_data()
+	#another.save_png("user://another.png")
 	mystery_img.save_png("user://mystery.png")
 	region_img.save_png("user://region.png")
 	mystery_img.lock()

@@ -170,7 +170,7 @@ func load_textures_to_uv_dict():
 	var config = load_into_config_file(file)
 	
 	# See how the data actually looks like - comment next line of not DEBUG
-	#config.save("user://new.ini")
+	config.save("user://new.ini")
 	
 	var textures = read_textures_numbers_and_build_tm_table(config)
 
@@ -178,10 +178,10 @@ func load_textures_to_uv_dict():
 		
 	var ind_to_layer = create_ind_to_layer(config, results.images_dict, results.texture_array)
 	
-	#var f = File.new()
-	#f.open("user://uv_dict.txt", File.WRITE)
-	#f.store_line(to_json(ind_to_layer))
-	#f.close()
+	var f = File.new()
+	f.open("user://uv_dict.txt", File.WRITE)
+	f.store_line(to_json(ind_to_layer))
+	f.close()
 	
 	return ind_to_layer
 	

@@ -1,12 +1,5 @@
 extends TextureButton
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	var texture = load("res://images/button/buttons.png")
 	var size = Vector2(140,30)
@@ -26,12 +19,6 @@ func _ready():
 	self.texture_hover = AtlasTexture.new()
 	self.texture_hover.atlas = texture
 	self.texture_hover.region = Rect2(size.x*3, 0, size.x ,size.y)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
 
 func _on_cancel_btn_pressed():
 	self.get_parent().visible = false

@@ -4,7 +4,6 @@ extends Control
 Once everything is loaded the it changes to Region scene.
 """
 
-
 var config
 
 var loading_thread : Thread
@@ -84,5 +83,3 @@ func load_single_DAT(dat_file : String):
 
 func _on_dialog_confirmed():
 	Core.game_dir = $dialog.current_dir
-	
-

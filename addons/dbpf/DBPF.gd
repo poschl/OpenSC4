@@ -110,7 +110,9 @@ func all_subfiles_by_group(group_id : int):
 	print("====================")
 
 func get_subfile(type_id : int, group_id : int, instance_id : int, subfile_class) -> DBPFSubfile: 
-	assert(self.indices.has([type_id, group_id, instance_id]), "Subfile not found (%08x %08x %08x)" % [type_id, group_id, instance_id])
+	if self.indices.has([type_id, group_id, instance_id]) == false:
+		Logger.error("Subfile not found (%08x %08x %08x)" % [type_id, group_id, instance_id])
+		return null
 
 	if subfiles.has([type_id, group_id, instance_id]) and subfiles[[type_id, group_id, instance_id]] != null:
 		return subfiles[[type_id, group_id, instance_id]]

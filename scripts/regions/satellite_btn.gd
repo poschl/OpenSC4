@@ -1,6 +1,5 @@
 extends TextureButton
 
-
 var active_btn : TextureButton = null
 var inactive_btn : TextureButton = null
 
@@ -9,7 +8,6 @@ func set_button(btn):
 	self.texture_normal = btn.texture_normal
 	self.texture_pressed = btn.texture_pressed
 	self.texture_hover = btn.texture_hover
-
 
 func _ready():
 	active_btn = TextureButton.new()
@@ -20,7 +18,6 @@ func _ready():
 		self.set_button(active_btn)
 	else:
 		self.set_button(inactive_btn)
-
 
 func _on_transport_btn_pressed():
 	Core.satellite_view = false

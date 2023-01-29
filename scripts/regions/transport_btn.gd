@@ -1,7 +1,5 @@
 extends TextureButton
 
-
-
 var active_btn : TextureButton = null
 var inactive_btn : TextureButton = null
 
@@ -10,7 +8,6 @@ func set_button(btn):
 	self.texture_normal = btn.texture_normal
 	self.texture_pressed = btn.texture_pressed
 	self.texture_hover = btn.texture_hover
-
 
 func _ready():
 	active_btn = TextureButton.new()

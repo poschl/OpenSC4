@@ -1,8 +1,6 @@
 extends Node
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+
 func build_menu_icon(button, size : Vector2, instance_id : int):
 	var btn_img = Core.get_subfile("PNG", "MENU_ICONS", instance_id)
 	button.texture_disabled = AtlasTexture.new()

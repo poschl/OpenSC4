@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://RegionUI/RegionUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://RegionView/Region.gd" type="Script" id=2]
@@ -37,6 +37,18 @@
 [ext_resource path="res://scripts/regions/regios_list.gd" type="Script" id=35]
 [ext_resource path="res://scripts/regions/cancel_btn.gd" type="Script" id=36]
 [ext_resource path="res://scripts/regions/load_btn.gd" type="Script" id=37]
+[ext_resource path="res://scripts/regions/screenshot_rect.gd" type="Script" id=38]
+[ext_resource path="res://shaders/region_outline.shader" type="Shader" id=39]
+[ext_resource path="res://images/button/snapshot.png" type="Texture" id=40]
+
+[sub_resource type="ShaderMaterial" id=8]
+resource_local_to_scene = true
+shader = ExtResource( 39 )
+shader_param/color = Color( 1, 1, 0, 0.9 )
+shader_param/width = 1.0
+shader_param/pattern = 1
+shader_param/inside = true
+shader_param/add_margins = false
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -66,6 +78,14 @@ ToolButton/colors/font_color = Color( 0, 0, 0, 1 )
 ToolButton/styles/focus = SubResource( 4 )
 ToolButton/styles/normal = SubResource( 5 )
 ToolButton/styles/pressed = SubResource( 6 )
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = ExtResource( 39 )
+shader_param/color = Color( 1, 1, 1, 1 )
+shader_param/width = 1.0
+shader_param/pattern = 1
+shader_param/inside = true
+shader_param/add_margins = false
 
 [node name="Region" type="Node2D"]
 script = ExtResource( 2 )
@@ -110,6 +130,7 @@ stretch_mode = 2
 [node name="UICanvas" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="UICanvas" instance=ExtResource( 1 )]
+material = SubResource( 8 )
 
 [node name="Control" type="Control" parent="UICanvas"]
 anchor_top = 1.0
@@ -676,6 +697,31 @@ margin_right = 20.0
 margin_bottom = 7.0
 text = "Cancel"
 
+[node name="screenshot_rect" type="TextureRect" parent="UICanvas"]
+material = SubResource( 9 )
+margin_left = 540.0
+margin_top = 313.0
+margin_right = 702.0
+margin_bottom = 435.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 162, 122 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 40 )
+script = ExtResource( 38 )
+
+[node name="Label" type="Label" parent="UICanvas/screenshot_rect"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 155.0
+margin_bottom = 87.0
+text = "Press C 
+to take snapshop.
+Press escape
+to cancel.
+"
+
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn" to="UICanvas/Control2/HBoxContainer/regions_btn" method="_on_regions_btn_pressed"]
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn" to="UICanvas/settings" method="_on_regions_btn_pressed"]
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/regions_btn/regions_menu/new_region_btn" to="UICanvas/new_region_dialog" method="_on_new_region_btn_pressed"]
@@ -689,6 +735,7 @@ text = "Cancel"
 [connection signal="pressed" from="UICanvas/Control2/HBoxContainer/exit_btn" to="UICanvas/Control2/HBoxContainer/exit_btn" method="_on_exit_btn_pressed"]
 [connection signal="pressed" from="UICanvas/settings" to="UICanvas/Control2/HBoxContainer/regions_btn" method="_on_settings_pressed"]
 [connection signal="pressed" from="UICanvas/settings" to="UICanvas/settings" method="_on_settings_pressed"]
+[connection signal="pressed" from="UICanvas/settings/settings_menu/screenshot_btn" to="UICanvas/screenshot_rect" method="_on_screenshot_btn_pressed"]
 [connection signal="pressed" from="UICanvas/legend/minimalize_btn" to="UICanvas/legend" method="_on_minimalize_btn_pressed"]
 [connection signal="pressed" from="UICanvas/legend/minimalize_btn" to="UICanvas/display_legend_btn" method="_on_minimalize_btn_pressed"]
 [connection signal="pressed" from="UICanvas/display_legend_btn" to="UICanvas/legend" method="_on_display_legend_btn_pressed"]
@@ -700,3 +747,4 @@ text = "Cancel"
 [connection signal="gui_input" from="UICanvas/load_region_dialog" to="UICanvas/load_region_dialog" method="_on_load_region_dialog_gui_input"]
 [connection signal="pressed" from="UICanvas/load_region_dialog/load_btn" to="UICanvas/load_region_dialog/ScrollContainer/regios_list" method="_on_load_btn_pressed"]
 [connection signal="pressed" from="UICanvas/load_region_dialog/cancel_btn" to="UICanvas/load_region_dialog" method="_on_cancel_btn_pressed"]
+[connection signal="gui_input" from="UICanvas/screenshot_rect" to="UICanvas/screenshot_rect" method="_on_screenshot_rect_gui_input"]
