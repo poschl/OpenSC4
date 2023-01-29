@@ -23,8 +23,7 @@ func _ready():
 
 	self.visible = false
 
-		
-	
+
 
 func _on_load_region_dialog_gui_input(event):
 	if event is InputEventMouseButton:

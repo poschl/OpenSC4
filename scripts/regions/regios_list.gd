@@ -38,7 +38,6 @@ func build_regions_list():
 
 
 func _on_load_btn_pressed():
-	Logger.info("Loading region: %s" % self.selected_region_to_load)
 	Core.current_region_name = selected_region_to_load
 	self.get_node("../../../../").load_region()
 	
