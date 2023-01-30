@@ -291,11 +291,13 @@ void fragment()
 	vec2 rem3 = abs(vec2(icoord3) - coord);
 	vec3 grid = vec3(1.0, 1.0, 1.0);
 	if (grid_bool){
-		if (rem1.x < (0.05 * max((5.0-float(zoom_ind)), 0.0)) ){
+		if (rem1.x < (0.05 * max(5.0-float(zoom_ind), 0.0)) ){
 			grid = vec3(0.6, 0.6, 0.6);
 		}
-		if (rem1.y < (0.05 * max((5.0-float(zoom_ind)), 0.0)) and grid_bool == true){
-			grid = vec3(0.6, 0.6, 0.6);
+		if (rem1.y < (0.05 * max((5.0-float(zoom_ind)), 0.0))) {
+			if (grid_bool == true) {
+				grid = vec3(0.6, 0.6, 0.6);
+			}
 		}
 	}
 	float sum_str = layer_w_0 + layer_w_1 + layer_w_2;
@@ -331,6 +333,13 @@ void fragment()
 
 [sub_resource type="ShaderMaterial" id=5]
 shader = SubResource( 4 )
+shader_param/zoom = null
+shader_param/cliff_ind = null
+shader_param/beach_ind = null
+shader_param/tiling_factor = null
+shader_param/water_height = 15.625
+shader_param/grid_bool = false
+shader_param/beach_ht_range = null
 
 [sub_resource type="Shader" id=16]
 code = "shader_type spatial;

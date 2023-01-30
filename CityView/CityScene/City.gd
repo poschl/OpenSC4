@@ -263,7 +263,7 @@ func create_terrain():
 	else:
 		heightmap = gen_random_terrain(size_w * 64 + 1, size_h * 64 + 1)
 		
-	heightmap = gen_random_terrain(size_w * 64 + 1, size_h * 64 + 1)
+	# DEBUG heightmap = gen_random_terrain(size_w * 64 + 1, size_h * 64 + 1)
 	var h = File.new()
 	h.open("user://heightmap.txt", File.WRITE)
 	h.store_csv_line(heightmap)

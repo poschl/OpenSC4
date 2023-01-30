@@ -10,10 +10,8 @@ var tm_table
 var heightmap : Array
 
 func _ready():
-	#mat.albedo_color = color
 	st.begin(Mesh.PRIMITIVE_TRIANGLE_FAN)
 	for v in vertices.size(): 
-		#st.add_color(color)
 		st.add_uv(UVs[v])
 		st.add_vertex(vertices[v])
 
