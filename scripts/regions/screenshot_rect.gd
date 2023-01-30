@@ -21,6 +21,11 @@ func take_snapshot():
 	var image = tex.get_data().get_rect(Rect2(pos.x,y ,size.x,size.y))
 	var timestamp = OS.get_ticks_msec() % 1000
 	image.flip_y()
+	# Check if directory with screenshots exists
+	var check_directory = Directory.new()
+	if not check_directory.dir_exists("user://screenshots"):
+		check_directory.make_dir_recursive("user://screenshots")
+	# Save the image
 	image.save_png("user://screenshots/%s.png" % str(timestamp))
 	self.get_child(0).visible = true
 
