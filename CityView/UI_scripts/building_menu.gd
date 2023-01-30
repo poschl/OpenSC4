@@ -19,3 +19,7 @@ func _ready():
 
 func _on_building_menu_btn_pressed():
 	self.visible = ! self.visible
+
+
+func _on_settings_btn_pressed():
+	self.visible = false

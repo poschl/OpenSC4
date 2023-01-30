@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://CityView/CityScene/City.gd" type="Script" id=1]
 [ext_resource path="res://CityView/CityScene/CameraAnchor3D.gd" type="Script" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://CityView/UI_scripts/exit_btn.gd" type="Script" id=36]
 [ext_resource path="res://CityView/UI_scripts/graphics_btn.gd" type="Script" id=37]
 [ext_resource path="res://scene/screenshot_rect.tscn" type="PackedScene" id=38]
+[ext_resource path="res://CityView/UI_scripts/settings_btn.gd" type="Script" id=39]
 
 [sub_resource type="ProceduralSky" id=15]
 radiance_size = 0
@@ -433,6 +434,8 @@ void fragment(){
 render_priority = 1
 shader = SubResource( 18 )
 
+[sub_resource type="ButtonGroup" id=21]
+
 [sub_resource type="ButtonGroup" id=20]
 
 [node name="City" type="Spatial"]
@@ -528,144 +531,14 @@ margin_bottom = -10.0
 rect_min_size = Vector2( 235, 222 )
 texture = ExtResource( 15 )
 
-[node name="settings_menu" type="TextureRect" parent="CanvasLayer/Control/left_bottom_menu"]
-margin_left = 228.0
-margin_top = 163.0
-margin_right = 704.0
-margin_bottom = 206.0
-rect_min_size = Vector2( 476, 43 )
-script = ExtResource( 10 )
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/left_bottom_menu/settings_menu"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -1.0
-margin_top = 3.0
-margin_right = -1.0
-alignment = 1
-
-[node name="save_btn" type="TextureButton" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
-margin_left = 22.0
-margin_right = 62.0
-margin_bottom = 41.0
-rect_min_size = Vector2( 40, 36 )
-script = ExtResource( 31 )
-
-[node name="empty_space_1" type="Panel" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 66.0
-margin_right = 74.0
-margin_bottom = 41.0
-rect_min_size = Vector2( 8, 0 )
-
-[node name="to_region_btn" type="TextureButton" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
-margin_left = 78.0
-margin_right = 118.0
-margin_bottom = 41.0
-rect_min_size = Vector2( 40, 36 )
-script = ExtResource( 32 )
-
-[node name="empty_space_2" type="Panel" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 122.0
-margin_right = 130.0
-margin_bottom = 41.0
-rect_min_size = Vector2( 8, 0 )
-
-[node name="exit_btn" type="TextureButton" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
-margin_left = 134.0
-margin_right = 174.0
-margin_bottom = 41.0
-rect_min_size = Vector2( 40, 36 )
-script = ExtResource( 36 )
-
-[node name="empty_space_3" type="Panel" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 178.0
-margin_right = 186.0
-margin_bottom = 41.0
-rect_min_size = Vector2( 8, 0 )
-
-[node name="snapshot_btn" type="TextureButton" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
-margin_left = 190.0
-margin_right = 230.0
-margin_bottom = 41.0
-rect_min_size = Vector2( 40, 36 )
-script = ExtResource( 33 )
-
-[node name="empty_space_4" type="Panel" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 234.0
-margin_right = 242.0
-margin_bottom = 41.0
-rect_min_size = Vector2( 8, 0 )
-
-[node name="snapshot_gallery_btn" type="TextureButton" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
-margin_left = 246.0
-margin_right = 286.0
-margin_bottom = 41.0
-rect_min_size = Vector2( 40, 36 )
-script = ExtResource( 35 )
-
-[node name="empty_space_5" type="Panel" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 290.0
-margin_right = 298.0
-margin_bottom = 41.0
-rect_min_size = Vector2( 8, 0 )
-
-[node name="graphics_btn" type="TextureButton" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
-margin_left = 302.0
-margin_right = 342.0
-margin_bottom = 41.0
-rect_min_size = Vector2( 40, 36 )
-script = ExtResource( 37 )
-
-[node name="empty_space_6" type="Panel" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 346.0
-margin_right = 354.0
-margin_bottom = 41.0
-rect_min_size = Vector2( 8, 0 )
-
-[node name="VBoxContainer(intentional)" type="VBoxContainer" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
-margin_left = 358.0
-margin_right = 398.0
-margin_bottom = 41.0
-
-[node name="empty_vertical_space" type="Panel" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer/VBoxContainer(intentional)"]
-modulate = Color( 1, 1, 1, 0 )
-margin_right = 40.0
-margin_bottom = 1.0
-rect_min_size = Vector2( 0, 1 )
-
-[node name="sounds_btn" type="TextureButton" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer/VBoxContainer(intentional)"]
-margin_top = 5.0
-margin_right = 40.0
-margin_bottom = 41.0
-rect_min_size = Vector2( 40, 36 )
-script = ExtResource( 34 )
-
-[node name="empty_space_7" type="Panel" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 402.0
-margin_right = 410.0
-margin_bottom = 41.0
-rect_min_size = Vector2( 8, 0 )
-
-[node name="settinngs_btn" type="TextureButton" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
-margin_left = 414.0
-margin_right = 454.0
-margin_bottom = 41.0
-rect_min_size = Vector2( 40, 36 )
-script = ExtResource( 30 )
-
 [node name="building_menu_btn" type="TextureButton" parent="CanvasLayer/Control/left_bottom_menu"]
 margin_left = 97.0
 margin_top = 31.0
 margin_right = 157.0
 margin_bottom = 77.0
 rect_min_size = Vector2( 60, 46 )
+toggle_mode = true
+group = SubResource( 21 )
 script = ExtResource( 8 )
 
 [node name="building_menu" type="TextureRect" parent="CanvasLayer/Control/left_bottom_menu/building_menu_btn"]
@@ -845,17 +718,165 @@ margin_bottom = 270.0
 rect_min_size = Vector2( 64, 50 )
 script = ExtResource( 14 )
 
+[node name="settings_btn" type="TextureButton" parent="CanvasLayer/Control/left_bottom_menu"]
+margin_left = 193.0
+margin_top = 169.0
+margin_right = 253.0
+margin_bottom = 215.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 60, 46 )
+rect_scale = Vector2( 0.66, 0.66 )
+toggle_mode = true
+group = SubResource( 21 )
+script = ExtResource( 39 )
+
+[node name="settings_menu" type="TextureRect" parent="CanvasLayer/Control/left_bottom_menu"]
+margin_left = 228.0
+margin_top = 163.0
+margin_right = 704.0
+margin_bottom = 206.0
+rect_min_size = Vector2( 476, 43 )
+script = ExtResource( 10 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/left_bottom_menu/settings_menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = 3.0
+margin_right = -1.0
+alignment = 1
+
+[node name="save_btn" type="TextureButton" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
+margin_left = 22.0
+margin_right = 62.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 40, 36 )
+script = ExtResource( 31 )
+
+[node name="empty_space_1" type="Panel" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 66.0
+margin_right = 74.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 8, 0 )
+
+[node name="to_region_btn" type="TextureButton" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
+margin_left = 78.0
+margin_right = 118.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 40, 36 )
+script = ExtResource( 32 )
+
+[node name="empty_space_2" type="Panel" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 122.0
+margin_right = 130.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 8, 0 )
+
+[node name="exit_btn" type="TextureButton" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
+margin_left = 134.0
+margin_right = 174.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 40, 36 )
+script = ExtResource( 36 )
+
+[node name="empty_space_3" type="Panel" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 178.0
+margin_right = 186.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 8, 0 )
+
+[node name="snapshot_btn" type="TextureButton" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
+margin_left = 190.0
+margin_right = 230.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 40, 36 )
+script = ExtResource( 33 )
+
+[node name="empty_space_4" type="Panel" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 234.0
+margin_right = 242.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 8, 0 )
+
+[node name="snapshot_gallery_btn" type="TextureButton" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
+margin_left = 246.0
+margin_right = 286.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 40, 36 )
+script = ExtResource( 35 )
+
+[node name="empty_space_5" type="Panel" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 290.0
+margin_right = 298.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 8, 0 )
+
+[node name="graphics_btn" type="TextureButton" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
+margin_left = 302.0
+margin_right = 342.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 40, 36 )
+script = ExtResource( 37 )
+
+[node name="empty_space_6" type="Panel" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 346.0
+margin_right = 354.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 8, 0 )
+
+[node name="VBoxContainer(intentional)" type="VBoxContainer" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
+margin_left = 358.0
+margin_right = 398.0
+margin_bottom = 41.0
+
+[node name="empty_vertical_space" type="Panel" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer/VBoxContainer(intentional)"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 40.0
+margin_bottom = 1.0
+rect_min_size = Vector2( 0, 1 )
+
+[node name="sounds_btn" type="TextureButton" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer/VBoxContainer(intentional)"]
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 40, 36 )
+script = ExtResource( 34 )
+
+[node name="empty_space_7" type="Panel" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 402.0
+margin_right = 410.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 8, 0 )
+
+[node name="settinngs_btn" type="TextureButton" parent="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer"]
+margin_left = 414.0
+margin_right = 454.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 40, 36 )
+script = ExtResource( 30 )
+
 [node name="screenshot_rect" parent="CanvasLayer" instance=ExtResource( 38 )]
 margin_left = 575.0
 margin_top = 252.0
 margin_right = 737.0
 margin_bottom = 374.0
 
-[connection signal="pressed" from="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer/save_btn" to="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer/save_btn" method="_on_save_btn_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer/exit_btn" to="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer/exit_btn" method="_on_exit_btn_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer/snapshot_btn" to="CanvasLayer/screenshot_rect" method="_on_snapshot_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/left_bottom_menu/building_menu_btn" to="CanvasLayer/Control/left_bottom_menu/settings_menu" method="_on_building_menu_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/left_bottom_menu/building_menu_btn" to="CanvasLayer/Control/left_bottom_menu/building_menu_btn/building_menu" method="_on_building_menu_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/left_bottom_menu/building_menu_btn/building_menu/networks_btn" to="CanvasLayer/Control/left_bottom_menu/building_menu_btn/building_menu/networks_btn/networks_menu" method="_on_networks_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/left_bottom_menu/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn" to="CanvasLayer/Control/left_bottom_menu/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble" method="_on_rails_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/left_bottom_menu/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble/rails" to="CanvasLayer/Control/left_bottom_menu/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble/rails" method="_on_rails_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/left_bottom_menu/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble/monorail" to="CanvasLayer/Control/left_bottom_menu/building_menu_btn/building_menu/networks_btn/networks_menu/rails_btn/bubble/monorail" method="_on_monorail_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/left_bottom_menu/settings_btn" to="CanvasLayer/Control/left_bottom_menu/settings_menu" method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/left_bottom_menu/settings_btn" to="CanvasLayer/Control/left_bottom_menu/building_menu_btn/building_menu" method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer/save_btn" to="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer/save_btn" method="_on_save_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer/exit_btn" to="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer/exit_btn" method="_on_exit_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/left_bottom_menu/settings_menu/HBoxContainer/snapshot_btn" to="CanvasLayer/screenshot_rect" method="_on_snapshot_btn_pressed"]
